@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Analytics 0.9.6\n"
+"Project-Id-Version: WooCommerce Analytics 0.9.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-analytics\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-01-24T14:53:13+00:00\n"
+"POT-Creation-Date: 2025-02-11T12:06:52+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: woocommerce-analytics\n"
@@ -33,7 +33,7 @@ msgstr ""
 #: woocommerce-analytics.php
 #: src/Internal/Requirements/WCValidator.php:39
 #: src/Internal/Requirements/WCValidator.php:44
-#: build/index.js:9
+#: build/index.js:2
 msgid "WooCommerce"
 msgstr ""
 
@@ -42,105 +42,103 @@ msgstr ""
 msgid "https://woocommerce.com/"
 msgstr ""
 
-#: src/Admin/Admin.php:65
-#: build/index.js:9
+#: src/Admin/Admin.php:70
+#: build/index.js:2
 msgid "Order attribution"
 msgstr ""
 
-#: src/Admin/Admin.php:125
-#: src/Admin/Admin.php:179
-#: src/Admin/Admin.php:180
+#: src/Admin/Admin.php:130
+#: src/Admin/Admin.php:184
+#: src/Admin/Admin.php:185
 msgid "Analytics (MVP)"
 msgstr ""
 
-#: src/Admin/Admin.php:135
-#: src/Admin/Admin.php:192
-#: build/index.js:9
+#: src/Admin/Admin.php:140
+#: src/Admin/Admin.php:197
+#: build/admin-app.js:2
+#: build/index.js:2
 msgid "Dashboard"
 msgstr ""
 
-#: src/Admin/Admin.php:148
-#: src/Admin/Admin.php:202
-#: build/index.js:9
+#: src/Admin/Admin.php:153
+#: src/Admin/Admin.php:207
+#: build/index.js:2
 msgid "Reports"
 msgstr ""
 
-#: src/Admin/Admin.php:161
-#: build/index.js:9
+#: src/Admin/Admin.php:166
+#: build/index.js:2
 msgid "Orders Over Time"
 msgstr ""
 
-#: src/Admin/Admin.php:191
+#: src/Admin/Admin.php:196
 msgid "Analytics Dashboard"
 msgstr ""
 
-#: src/Admin/Admin.php:201
+#: src/Admin/Admin.php:206
 msgid "Analytics Reports"
 msgstr ""
 
-#: src/Admin/Admin.php:211
-msgid "Analytics / All reports"
+#: src/Admin/Admin.php:216
+msgid "Reports / All"
 msgstr ""
 
-#: src/Admin/Admin.php:212
-#: build/index.js:9
+#: src/Admin/Admin.php:217
 msgid "All reports"
 msgstr ""
 
-#: src/Admin/Admin.php:221
-msgid "Analytics / Finances"
+#: src/Admin/Admin.php:226
+msgid "Reports / Finances"
 msgstr ""
 
-#: src/Admin/Admin.php:222
-#: build/index.js:9
+#: src/Admin/Admin.php:227
 msgid "Finances"
 msgstr ""
 
-#: src/Admin/Admin.php:231
-msgid "Analytics / Inventory"
+#: src/Admin/Admin.php:236
+msgid "Reports / Inventory"
 msgstr ""
 
-#: src/Admin/Admin.php:232
-#: build/index.js:9
+#: src/Admin/Admin.php:237
 msgid "Inventory"
 msgstr ""
 
-#: src/Admin/Admin.php:241
-msgid "Analytics / Orders"
+#: src/Admin/Admin.php:246
+msgid "Reports / Orders"
 msgstr ""
 
-#: src/Admin/Admin.php:242
-#: build/index.js:9
+#: src/Admin/Admin.php:247
+#: build/index.js:2
 msgid "Orders"
 msgstr ""
 
-#: src/Admin/Admin.php:251
-msgid "Analytics / Sales"
+#: src/Admin/Admin.php:256
+msgid "Reports / Sales"
 msgstr ""
 
-#: src/Admin/Admin.php:252
-#: build/index.js:9
+#: src/Admin/Admin.php:257
 msgid "Sales"
 msgstr ""
 
-#: src/Admin/Admin.php:261
-#: src/Admin/Admin.php:262
-#: src/Admin/Admin.php:321
-#: build/index.js:9
+#: src/Admin/Admin.php:266
+#: src/Admin/Admin.php:267
+#: src/Admin/Admin.php:326
+#: build/admin-app.js:2
+#: build/index.js:2
 msgid "Settings"
 msgstr ""
 
-#: src/Admin/Admin.php:276
-#: build/index.js:9
+#: src/Admin/Admin.php:281
+#: build/index.js:2
 msgid "Loading…"
 msgstr ""
 
-#: src/Admin/Admin.php:311
+#: src/Admin/Admin.php:316
 msgid "Analytics (Dev)"
 msgstr ""
 
-#: src/Admin/Admin.php:334
-#: build/index.js:9
+#: src/Admin/Admin.php:339
+#: build/index.js:2
 msgid "Connect your store"
 msgstr ""
 
@@ -277,76 +275,263 @@ msgstr ""
 msgid "%1$sThe Woo Team%2$s"
 msgstr ""
 
+#: build/admin-app.js:2
+msgid "Go to the Dashboard"
+msgstr ""
+
+#: build/admin-app.js:2
+msgid "Back"
+msgstr ""
+
+#: build/admin-app.js:2
+msgid "Site Icon"
+msgstr ""
+
+#: build/admin-app.js:2
+msgid "(opens in a new tab)"
+msgstr ""
+
+#: build/admin-app.js:2
+msgid "Open command palette"
+msgstr ""
+
+#: build/admin-app.js:2
+msgid "Go to Site Editor"
+msgstr ""
+
+#: build/admin-app.js:2
+msgid "View site (opens in a new tab)"
+msgstr ""
+
+#: build/admin-app.js:2
+msgid "Main content"
+msgstr ""
+
+#: build/admin-app.js:2
+msgid "Back to the admin"
+msgstr ""
+
+#: build/admin-app.js:2
+msgid "Share feedback"
+msgstr ""
+
+#: build/admin-app.js:2
+msgid "Analytics"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "Orders over time"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "%+d%%"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "Payments by method"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "%1$d%%"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "Returns"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "Total sales"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "Taxes by code"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "$10K"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "+3%"
+msgstr ""
+
+#: build/admin-app.js:2
 #: build/index.js:2
 msgid "📊 Analytics Connection Data"
 msgstr ""
 
+#: build/admin-app.js:2
 #: build/index.js:2
 msgid "Error during connection/disconnection:"
 msgstr ""
 
+#: build/admin-app.js:2
 #: build/index.js:2
 msgid "Connecting…"
 msgstr ""
 
+#: build/admin-app.js:2
 #: build/index.js:2
 msgid "Connect Site"
 msgstr ""
 
+#: build/admin-app.js:2
 #: build/index.js:2
 msgid "Disconnecting…"
 msgstr ""
 
+#: build/admin-app.js:2
 #: build/index.js:2
 msgid "Disconnect Site"
 msgstr ""
 
+#: build/admin-app.js:2
 #: build/index.js:2
 msgid "Reset Initial Full Sync Status - For development and debugging if the site is changing domains"
 msgstr ""
 
+#: build/admin-app.js:2
 #: build/index.js:2
 msgid "Reset Initial Full Sync Status"
 msgstr ""
 
+#: build/admin-app.js:2
 #: build/index.js:2
 msgid "Full Connection Data"
 msgstr ""
 
+#: build/admin-app.js:2
 #: build/index.js:2
 msgid "🔄 Sync Status"
 msgstr ""
 
+#: build/admin-app.js:2
 #: build/index.js:2
 msgid "Loading sync status…"
 msgstr ""
 
+#: build/admin-app.js:2
 #: build/index.js:2
 msgid "Error loading sync status:"
 msgstr ""
 
+#: build/admin-app.js:2
 #: build/index.js:2
 msgid "Sync Progress:"
 msgstr ""
 
+#: build/admin-app.js:2
 #: build/index.js:2
 msgid "No connection"
 msgstr ""
 
+#: build/admin-app.js:2
 #: build/index.js:2
 msgid "Start"
 msgstr ""
 
+#: build/admin-app.js:2
 #: build/index.js:2
 msgid "Stop"
 msgstr ""
 
+#: build/admin-app.js:2
 #: build/index.js:2
 msgid "Full Sync Status Data"
 msgstr ""
 
+#: build/admin-app.js:2
 #: build/index.js:2
 msgid "🧩 Connect-Aware Extensions"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "Unassigned"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "Channels"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "Channel"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "Sources"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "Source"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "Campaigns"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "Campaign"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "Devices"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "Device"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "Channels + Sources"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "Channel + Source"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "Name"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "Description"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "Category"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "Author"
+msgstr ""
+
+#: build/admin-app.js:2
+#: build/index.js:2
+msgid "Last viewed"
 msgstr ""
 
 #: build/index.js:2
@@ -366,345 +551,245 @@ msgid "Connect data"
 msgstr ""
 
 #: build/index.js:2
-msgid "Payments by method"
-msgstr ""
-
-#: build/index.js:2
-msgid "Orders over time"
-msgstr ""
-
-#: build/index.js:2
-msgid "Returns"
-msgstr ""
-
-#: build/index.js:2
-msgid "%+d%%"
-msgstr ""
-
-#: build/index.js:2
-msgid "%1$d%%"
-msgstr ""
-
-#: build/index.js:2
-msgid "Taxes by code"
-msgstr ""
-
-#: build/index.js:2
-msgid "$10K"
-msgstr ""
-
-#: build/index.js:2
-msgid "+3%"
-msgstr ""
-
-#: build/index.js:9
-msgid "Name"
-msgstr ""
-
-#: build/index.js:9
-msgid "Description"
-msgstr ""
-
-#: build/index.js:9
-msgid "Category"
-msgstr ""
-
-#: build/index.js:9
-msgid "Author"
-msgstr ""
-
-#: build/index.js:9
-msgid "Last viewed"
-msgstr ""
-
-#: build/index.js:9
-msgid "Unassigned"
-msgstr ""
-
-#: build/index.js:9
-msgid "Channels"
-msgstr ""
-
-#: build/index.js:9
-msgid "Channel"
-msgstr ""
-
-#: build/index.js:9
-msgid "Sources"
-msgstr ""
-
-#: build/index.js:9
-msgid "Source"
-msgstr ""
-
-#: build/index.js:9
-msgid "Campaigns"
-msgstr ""
-
-#: build/index.js:9
-msgid "Campaign"
-msgstr ""
-
-#: build/index.js:9
-msgid "Devices"
-msgstr ""
-
-#: build/index.js:9
-msgid "Device"
-msgstr ""
-
-#: build/index.js:9
-msgid "Channels + Sources"
-msgstr ""
-
-#: build/index.js:9
-msgid "Channel + Source"
-msgstr ""
-
-#: build/index.js:9
 msgid "No data to display"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Net sales:"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Unable to load data"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "There was a problem retrieving the requested information."
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Try again"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "We're preparing your data"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Your data is being analyzed and your order attribution report will be ready soon. Feel free to navigate away from this screen — we'll notify you when it's ready."
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Your store data will start syncing momentarily…"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Your site is currently not publicly accessible, which is required for this extension to work. Please ensure your site is online and accessible to the internet, then try again."
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "An error occurred. Please try again."
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Authorize access to store data"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "In order to generate order attribution reports, we'll need<br/>your permission to access your store data."
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "By authorizing, you agree to our <terms>Terms of Service</terms><br/>and to <sync>sync your site's data</sync> with us."
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Authorize store access"
 msgstr ""
 
-#: build/index.js:9
-msgid "Net sales"
-msgstr ""
-
-#: build/index.js:9
-msgid "Total sales"
-msgstr ""
-
-#: build/index.js:9
-msgid "Gross sales"
-msgstr ""
-
-#: build/index.js:9
-msgid "Refunds"
-msgstr ""
-
-#: build/index.js:9
-msgid "Coupons"
-msgstr ""
-
-#: build/index.js:9
-msgid "Fees{{super /}}"
-msgstr ""
-
-#: build/index.js:9
-msgid "Shipping{{super /}}"
-msgstr ""
-
-#: build/index.js:9
-msgid "New customers"
-msgstr ""
-
-#: build/index.js:9
-msgid "Repeat customers"
-msgstr ""
-
-#: build/index.js:9
-msgid "Avg order value"
-msgstr ""
-
-#: build/index.js:9
+#: build/index.js:2
 msgid "Fees{{super /}}:"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Fees paid in orders. These are fees you charged to customers (not credit card fees you pay). Deducted from gross sales to calculate net sales."
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Shipping{{super /}}:"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Total revenue from delivery charges, exclusing shipping label purchases."
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Orders view by"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
+msgid "Net sales"
+msgstr ""
+
+#: build/index.js:2
+msgid "Gross sales"
+msgstr ""
+
+#: build/index.js:2
+msgid "Refunds"
+msgstr ""
+
+#: build/index.js:2
+msgid "Coupons"
+msgstr ""
+
+#: build/index.js:2
+msgid "Fees{{super /}}"
+msgstr ""
+
+#: build/index.js:2
+msgid "Shipping{{super /}}"
+msgstr ""
+
+#: build/index.js:2
+msgid "New customers"
+msgstr ""
+
+#: build/index.js:2
+msgid "Repeat customers"
+msgstr ""
+
+#: build/index.js:2
+msgid "Avg order value"
+msgstr ""
+
+#: build/index.js:2
 msgid "Net Sales"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Total Sales"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Gross Sales"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Fees"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Shipping"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Customers"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Select up to 4"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Search"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Showing data for the selected"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "+ Add another"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Reset"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Compare"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "by net sales"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Top"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Previous period:"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Previous year:"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Order Attribution"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Currently in Beta: Order Attribution helps you understand which marketing channels drive your shoppers' purchase decisions. Help us improve this new feature by {{link /}}."
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "sharing your feedback"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "View helper text"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Channels:"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Marketing categories grouping similar traffic sources. Shows which strategies drive sales."
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Source:"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Specific platform customers came from before purchase. Reveals individual source performance."
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Devices:"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Hardware used by customers for purchases. Identifies most common customer devices."
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Campaigns:"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Marketing initiatives tracked by UTM parameters. Measures campaign performance."
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Channels + Sources:"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Combined view of marketing channels and specific sources. Shows their impact on orders and revenue."
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Read more about these reports"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Woocommerce Analytics"
 msgstr ""
 
-#: build/index.js:9
+#: build/index.js:2
 msgid "Report"
 msgstr ""

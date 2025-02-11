@@ -51,6 +51,11 @@ class Admin implements RegistrableInterface {
 		if ( Features::is_enabled( 'mvp' ) ) {
 			add_action( 'admin_menu', array( $this, 'analytics_add_mvp_menu_items' ) );
 		}
+
+		if ( Features::is_enabled( 'newAdminLayout' ) ) {
+			add_action( 'admin_enqueue_scripts', array( $this, 'analytics_enqueue_new_admin_layout_app' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_sections_structure_script' ) );
+		}
 	}
 
 	/**
@@ -191,7 +196,7 @@ class Admin implements RegistrableInterface {
 			__( 'Analytics Dashboard', 'woocommerce-analytics' ),
 			__( 'Dashboard', 'woocommerce-analytics' ),
 			'view_woocommerce_reports',
-			'wc-analytics',
+			'wc-analytics/dashboard',
 			array( $this, 'render_admin_layout_container' )
 		);
 
@@ -207,8 +212,8 @@ class Admin implements RegistrableInterface {
 
 		// Reports > All Reports.
 		add_submenu_page(
-			'woocommerce-analytics.php', // Hack to make the page hidden from the menu.
-			__( 'Analytics / All reports', 'woocommerce-analytics' ),
+			'woocommerce-analytics-reports.php', // Hack to make the page hidden from the menu.
+			__( 'Reports / All', 'woocommerce-analytics' ),
 			__( 'All reports', 'woocommerce-analytics' ),
 			'view_woocommerce_reports',
 			'wc-analytics/reports/all',
@@ -217,8 +222,8 @@ class Admin implements RegistrableInterface {
 
 		// Reports > Finances.
 		add_submenu_page(
-			'woocommerce-analytics.php', // Hack to make the page hidden from the menu.
-			__( 'Analytics / Finances', 'woocommerce-analytics' ),
+			'woocommerce-analytics-reports.php', // Hack to make the page hidden from the menu.
+			__( 'Reports / Finances', 'woocommerce-analytics' ),
 			__( 'Finances', 'woocommerce-analytics' ),
 			'view_woocommerce_reports',
 			'wc-analytics/reports/finances',
@@ -227,8 +232,8 @@ class Admin implements RegistrableInterface {
 
 		// Reports > Inventory.
 		add_submenu_page(
-			'woocommerce-analytics.php', // Hack to make the page hidden from the menu.
-			__( 'Analytics / Inventory', 'woocommerce-analytics' ),
+			'woocommerce-analytics-reports.php', // Hack to make the page hidden from the menu.
+			__( 'Reports / Inventory', 'woocommerce-analytics' ),
 			__( 'Inventory', 'woocommerce-analytics' ),
 			'view_woocommerce_reports',
 			'wc-analytics/reports/inventory',
@@ -237,8 +242,8 @@ class Admin implements RegistrableInterface {
 
 		// Reports > Orders.
 		add_submenu_page(
-			'woocommerce-analytics.php', // Hack to make the page hidden from the menu.
-			__( 'Analytics / Orders', 'woocommerce-analytics' ),
+			'woocommerce-analytics-reports.php', // Hack to make the page hidden from the menu.
+			__( 'Reports / Orders', 'woocommerce-analytics' ),
 			__( 'Orders', 'woocommerce-analytics' ),
 			'view_woocommerce_reports',
 			'wc-analytics/reports/orders',
@@ -247,8 +252,8 @@ class Admin implements RegistrableInterface {
 
 		// Reports > Sales.
 		add_submenu_page(
-			'woocommerce-analytics.php', // Hack to make the page hidden from the menu.
-			__( 'Analytics / Sales', 'woocommerce-analytics' ),
+			'woocommerce-analytics-reports.php', // Hack to make the page hidden from the menu.
+			__( 'Reports / Sales', 'woocommerce-analytics' ),
 			__( 'Sales', 'woocommerce-analytics' ),
 			'view_woocommerce_reports',
 			'wc-analytics/reports/sales',
@@ -272,7 +277,7 @@ class Admin implements RegistrableInterface {
 	 */
 	public function render_admin_layout_container(): void {
 		?>
-		<div id="wc-analytics-new-admin-layout" class="wc-analytics-new-admin-layout edit-site">
+		<div id="wc-analytics-admin-app" class="wc-analytics-admin-app admin-app">
 			<?php esc_html_e( 'Loading…', 'woocommerce-analytics' ); ?>
 		</div>
 		<?php
@@ -343,13 +348,16 @@ class Admin implements RegistrableInterface {
 	}
 
 	/**
-	 * Load the admin script.
+	 * Check if the current page is a new admin layout page.
 	 *
 	 * @param string $hook The hook name of the page.
+	 * @return bool
 	 */
-	public function analytics_load_custom_wp_admin_scripts( $hook ): void {
+	public function is_new_admin_layout_page( $hook ) {
 		$new_admin_pages = array(
 			'toplevel_page_wc-analytics',
+
+			'analytics-mvp_page_wc-analytics/dashboard',
 
 			'analytics-mvp_page_wc-analytics/reports',
 			'admin_page_wc-analytics/reports/all',
@@ -361,25 +369,20 @@ class Admin implements RegistrableInterface {
 			'analytics-mvp_page_wc-analytics/settings',
 		);
 
+		return in_array( $hook, $new_admin_pages, true );
+	}
+
+	/**
+	 * Load the admin script.
+	 *
+	 * @param string $hook The hook name of the page.
+	 */
+	public function analytics_load_custom_wp_admin_scripts( $hook ): void {
 		if (
-			'woocommerce_page_wc-admin' !== $hook && // Classic Admin.
-			! in_array( $hook, $new_admin_pages, true ) // New Admin Layout pages.
+			'woocommerce_page_wc-admin' !== $hook && // WooCommerce Admin pages.
+			! $this->is_new_admin_layout_page( $hook ) // Analytics pages.
 		) {
 			return;
-		}
-
-		// Add the is-fullscreen-mode class to the body for the new admin layout.
-		if (
-			Features::is_enabled( 'newAdminLayout' ) &&
-			in_array( $hook, $new_admin_pages, true )
-		) {
-			// Adding `is-fullscreen-mode` class to the body.
-			add_filter(
-				'admin_body_class',
-				static function ( $classes ) {
-					return "$classes is-fullscreen-mode";
-				}
-			);
 		}
 
 		if ( $this->is_asset_local( 'index.js' ) ) {
@@ -482,6 +485,167 @@ class Admin implements RegistrableInterface {
 
 		// Set translation file.
 		wp_set_script_translations( 'analytics-main-app', 'woocommerce-analytics' );
+	}
+
+	/**
+	 * Enqueue the new admin layout app.
+	 *
+	 * @param string $hook The hook name of the page.
+	 * @return void
+	 */
+	public function analytics_enqueue_new_admin_layout_app( $hook ): void {
+		if ( ! $this->is_new_admin_layout_page( $hook ) ) {
+			return;
+		}
+
+		// Adding `is-fullscreen-mode` class to the body.
+		add_filter(
+			'admin_body_class',
+			static function ( $classes ) {
+				return "$classes is-fullscreen-mode woocommerce-analytics";
+			}
+		);
+
+		Assets::register_script(
+			'analytics-admin-app',
+			'admin-app.js',
+			$this->get_local_build_path() . 'admin-app.js',
+			array(
+				'enqueue'    => true,
+				'in_footer'  => true,
+				'textdomain' => 'woocommerce-analytics',
+			)
+		);
+		Assets::enqueue_script( 'analytics-admin-app' );
+	}
+
+	/**
+	 * Get the structure of pages/menus for the WooCommerce Analytics section.
+	 *
+	 * @return array The filtered menu structure.
+	 */
+	public function get_wc_analytics_sections_structure(): array {
+		global $menu, $submenu;
+
+		$analytics_menu = array();
+
+		/*
+		 * Map with extra data for the WooCommerce Analytics menu items.
+		 * - icon: The icon ID for the menu item.
+		 * - addToPalette: Whether to add the icon to the Command Palette.
+		 */
+		$extras = array(
+			'wc-analytics/dashboard'         => array(
+				'icon' => 'wordpress/navigation',
+				'addToPalette' => true,
+			),
+			'wc-analytics/reports'           => array(
+				'icon' => 'wc-analytics/reports',
+				'addToPalette' => true,
+			),
+			'wc-analytics/reports/all'       => array(
+				'icon' => 'wc-analytics/reports',
+				'addToPalette' => true,
+			),
+			'wc-analytics/reports/finances'  => array(
+				'icon' => 'wordpress/payment',
+				'addToPalette' => true,
+			),
+			'wc-analytics/reports/inventory' => array(
+				'icon' => 'wordpress/tag',
+				'addToPalette' => true,
+			),
+			'wc-analytics/reports/orders'    => array(
+				'icon' => 'wordpress/receipt',
+				'addToPalette' => true,
+			),
+			'wc-analytics/reports/sales'     => array(
+				'icon' => 'wc-analytics/bag',
+				'addToPalette' => true,
+			),
+
+			'wc-analytics/settings'          => array(
+				'icon' => 'wordpress/cog',
+				'addToPalette' => true,
+			),
+		);
+
+		/*
+		 * Create Reports subsections,
+		 * based on the `woocommerce-analytics-reports.php` slug
+		 */
+		$reports_subsections = array();
+		if ( isset( $submenu['woocommerce-analytics-reports.php'] ) ) {
+			foreach ( $submenu['woocommerce-analytics-reports.php'] as $item ) {
+				$extra = isset( $extras[ $item[2] ] ) ? $extras[ $item[2] ] : array();
+				$reports_subsections[] = array(
+					'title'        => $item[0],
+					'path'         => $item[2],
+					'iconId'       => $extra['icon'] ?? '',
+					'addToPalette' => $extra['addToPalette'] ?? false,
+				);
+			}
+		}
+
+		foreach ( $menu as $item ) {
+			// Only iterate over the WooCommerce Analytics menu.
+			if ( 'wc-analytics' === $item[2] ) {
+				$analytics_menu['home'] = array(
+					'title'  => $item[0],
+					'path'   => $item[2],
+					'iconId' => $item[6],
+				);
+				break;
+			}
+		}
+
+		// Get the sub-sections of the 'wc-analytics' menu.
+		if ( isset( $submenu['wc-analytics'] ) ) {
+			$analytics_menu['sections'] = array();
+
+			foreach ( $submenu['wc-analytics'] as $item ) {
+				$extra = isset( $extras[ $item[2] ] ) ? $extras[ $item[2] ] : array();
+				$section = array(
+					'title'        => $item[0],
+					'path'         => $item[2],
+					'iconId'       => $extra['icon'] ?? '',
+					'addToPalette' => $extra['addToPalette'] ?? false,
+				);
+
+				if ( 'wc-analytics/reports' === $item[2] ) {
+					$section['subsections'] = $reports_subsections;
+				}
+
+				$analytics_menu['sections'][] = $section;
+
+			}
+		}
+
+		return $analytics_menu;
+	}
+
+	/**
+	 * Enqueue the sections structure as a client global variable.
+	 *
+	 * @param string $hook The hook name of the page.
+	 * @return void
+	 */
+	public function enqueue_sections_structure_script( $hook ): void {
+		if ( ! $this->is_new_admin_layout_page( $hook ) ) {
+			return;
+		}
+
+		// Get the menu structure.
+		$menu_structure = $this->get_wc_analytics_sections_structure();
+
+		// Add the default section, which is the dashboard.
+		$menu_json = wp_json_encode( $menu_structure );
+
+		wp_add_inline_script(
+			'analytics-admin-app', // Enqueue for the new admin layout app.
+			"window.wcAnalyticsSections = {$menu_json};",
+			'before'
+		);
 	}
 
 	/**

@@ -1,5 +1,10 @@
 *** WooCommerce Analytics Changelog ***
 
+= 0.9.7 - 2025-02-11 =
+* Add wpwrap selector to ensure white background on OA screens.
+* Adding dataviews package.
+* Tweak - WC 9.7 compatibility.
+
 = 0.9.6 - 2025-01-24 =
 * Doc - Update readme.txt.
 
