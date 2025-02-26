@@ -5,6 +5,7 @@ namespace Automattic\WooCommerce\Analytics\Internal\FullSyncCheck;
 
 use Automattic\WooCommerce\Admin\Notes\Note;
 use Automattic\WooCommerce\Admin\Notes\NoteTraits;
+use Automattic\WooCommerce\Admin\Notes\Notes;
 use Automattic\WooCommerce\Internal\Admin\Notes\MerchantEmailNotifications;
 
 defined( 'ABSPATH' ) || exit;
@@ -29,6 +30,13 @@ class AdminFullSyncEmailNotification {
 	 * Get the note to send to the merchant when the full sync is complete.
 	 */
 	public static function get_note(): Note {
+
+		// Prevent duplicate notes from being created (always returns lowest ID note).
+		$existing_note = Notes::get_note_by_name( self::NOTE_NAME );
+		if ( $existing_note ) {
+			return $existing_note;
+		}
+
 		$note = new Note();
 		$note->set_title( __( 'Your order attribution report is ready!', 'woocommerce-analytics' ) );
 
@@ -76,8 +84,14 @@ class AdminFullSyncEmailNotification {
 	public static function send_email_notification(): void {
 		$note = self::get_note();
 		$note->save();
+
+		// If the note is already sent, don't send it again.
+		if ( $note->get_status() === Note::E_WC_ADMIN_NOTE_SENT ) {
+			return;
+		}
+
 		MerchantEmailNotifications::send_merchant_notification( $note );
-		$note->set_status( 'sent' );
+		$note->set_status( Note::E_WC_ADMIN_NOTE_SENT );
 		$note->save();
 	}
 }

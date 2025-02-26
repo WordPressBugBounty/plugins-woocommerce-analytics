@@ -1,7 +1,7 @@
 === WooCommerce Analytics ===
 Contributors: WooCommerce
 Tags: WooCommerce, analytics, order attribution, marketing, business insights
-Stable tag: 0.9.7
+Stable tag: 0.9.8
 Requires at least: 6.5
 Requires PHP: 7.4
 Tested up to: 6.7
@@ -82,9 +82,11 @@ By identifying top-performing channels and sources, you can allocate your market
 
 == Changelog ==
 
+= 0.9.8 - 2025-02-26 =
+* Fix - Catch division by zero.
+* Update - Ensure single report ready email is sent.
+
 = 0.9.7 - 2025-02-11 =
-* Add wpwrap selector to ensure white background on OA screens.
-* Adding dataviews package.
 * Tweak - WC 9.7 compatibility.
 
 = 0.9.6 - 2025-01-24 =

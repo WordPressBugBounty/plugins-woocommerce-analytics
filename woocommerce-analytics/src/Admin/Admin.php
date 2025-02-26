@@ -167,7 +167,33 @@ class Admin implements RegistrableInterface {
 				'parent'   => 'woocommerce-analytics-mvp',
 				'path'     => '/woocommerce-analytics/orders-over-time',
 				'nav_args' => array(
-					'order'  => 20,
+					'order'  => 40,
+					'parent' => 'woocommerce-analytics-mvp',
+				),
+			)
+		);
+
+		wc_admin_register_page(
+			array(
+				'id'       => 'woocommerce-analytics-avg-order-value-over-time',
+				'title'    => __( 'Average Order Value Over Time', 'woocommerce-analytics' ),
+				'parent'   => 'woocommerce-analytics-mvp',
+				'path'     => '/woocommerce-analytics/avg-order-value-over-time',
+				'nav_args' => array(
+					'order'  => 40,
+					'parent' => 'woocommerce-analytics-mvp',
+				),
+			)
+		);
+
+		wc_admin_register_page(
+			array(
+				'id'       => 'woocommerce-analytics-avg-items-per-order-over-time',
+				'title'    => __( 'Average Items Per Order Over Time', 'woocommerce-analytics' ),
+				'parent'   => 'woocommerce-analytics-mvp',
+				'path'     => '/woocommerce-analytics/avg-items-per-order-over-time',
+				'nav_args' => array(
+					'order'  => 40,
 					'parent' => 'woocommerce-analytics-mvp',
 				),
 			)
@@ -247,6 +273,36 @@ class Admin implements RegistrableInterface {
 			__( 'Orders', 'woocommerce-analytics' ),
 			'view_woocommerce_reports',
 			'wc-analytics/reports/orders',
+			array( $this, 'render_admin_layout_container' ),
+		);
+
+		// Reports > Orders Over Time.
+		add_submenu_page(
+			'woocommerce-analytics-reports.php', // Hack to make the page hidden from the menu.
+			__( 'Reports / Orders Over Time', 'woocommerce-analytics' ),
+			__( 'Orders Over Time', 'woocommerce-analytics' ),
+			'view_woocommerce_reports',
+			'wc-analytics/reports/orders-over-time',
+			array( $this, 'render_admin_layout_container' ),
+		);
+
+		// Reports > Average Order Value Over Time.
+		add_submenu_page(
+			'woocommerce-analytics-reports.php', // Hack to make the page hidden from the menu.
+			__( 'Reports / Average Order Value Over Time', 'woocommerce-analytics' ),
+			__( 'Average Order Value Over Time', 'woocommerce-analytics' ),
+			'view_woocommerce_reports',
+			'wc-analytics/reports/avg-order-value-over-time',
+			array( $this, 'render_admin_layout_container' ),
+		);
+
+		// Reports > Average Items Per Order Over Time.
+		add_submenu_page(
+			'woocommerce-analytics-reports.php', // Hack to make the page hidden from the menu.
+			__( 'Reports / Average Items Per Order Over Time', 'woocommerce-analytics' ),
+			__( 'Average Items Per Order Over Time', 'woocommerce-analytics' ),
+			'view_woocommerce_reports',
+			'wc-analytics/reports/avg-items-per-order-over-time',
 			array( $this, 'render_admin_layout_container' ),
 		);
 
@@ -365,7 +421,9 @@ class Admin implements RegistrableInterface {
 			'admin_page_wc-analytics/reports/inventory',
 			'admin_page_wc-analytics/reports/orders',
 			'admin_page_wc-analytics/reports/sales',
-
+			'admin_page_wc-analytics/reports/orders-over-time',
+			'admin_page_wc-analytics/reports/avg-order-value-over-time',
+			'admin_page_wc-analytics/reports/avg-items-per-order-over-time',
 			'analytics-mvp_page_wc-analytics/settings',
 		);
 

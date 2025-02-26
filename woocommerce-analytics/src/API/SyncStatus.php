@@ -232,7 +232,8 @@ class SyncStatus extends WC_REST_Controller implements RegistrableInterface {
 	 */
 	public function sync_status() {
 		$is_connected       = $this->manager->is_connected();
-		$full_status        = $this->sync_modules->get_full_sync_immediately()->get_status();
+		$sync_module        = $this->sync_modules->get_full_sync_immediately();
+		$full_status        = $sync_module->get_status();
 		$full_sync_finished = get_option( self::INITIAL_FULL_SYNC_OPTION, 0 );
 		$is_finished        = $is_connected && $full_sync_finished > 0;
 
@@ -243,7 +244,7 @@ class SyncStatus extends WC_REST_Controller implements RegistrableInterface {
 		 */
 		$status = array(
 			'is_connected'                          => $is_connected,
-			'is_started'                            => $this->sync_modules->get_full_sync_immediately()->is_started(),
+			'is_started'                            => $sync_module->is_started(),
 			'is_finished'                           => $is_finished,
 			'progress_percentage'                   => $is_finished ? 100 : 0,
 			'analytics_reports_progress_percentage' => $is_finished ? 100 : 0,
@@ -254,8 +255,18 @@ class SyncStatus extends WC_REST_Controller implements RegistrableInterface {
 		// Check that Woocommerce Analytics Reports data are queued to sync (i.e., the status isn't just for the initial mini sync).
 		$orders_in_queue = ! empty( $full_status['progress']['woocommerce_analytics'] );
 		if ( $orders_in_queue ) {
+
 			// We show the actual full sync progress percentage if full sync is in progress.
-			$status['progress_percentage'] = $is_finished ? 100 : $this->sync_modules->get_full_sync_immediately()->get_sync_progress_percentage() ?? 0;
+			if ( $is_finished ) {
+				$status['progress_percentage'] = 100;
+			} else {
+				try {
+					$status['progress_percentage'] = $sync_module->get_sync_progress_percentage() ?? 0;
+				} catch ( \Exception $e ) {
+					$this->logger->log_exception( $e, __METHOD__ );
+					$status['progress_percentage'] = 0;
+				}
+			}
 
 			// Use the real Woocommerce Analytics progress percentage in case full sync is in progress but Woocommerce Analytic is further ahead.
 			$woocommerce_analytics_progress = $full_status['progress']['woocommerce_analytics'];

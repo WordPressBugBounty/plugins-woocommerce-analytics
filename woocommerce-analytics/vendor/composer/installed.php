@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'woocommerce/woocommerce-analytics',
-        'pretty_version' => 'dev-release/0.9.7',
-        'version' => 'dev-release/0.9.7',
-        'reference' => '526d4a1fc6a585a2cc8c4bdc003ee771b982064d',
+        'pretty_version' => 'dev-release',
+        'version' => 'dev-release',
+        'reference' => 'b6428ade76d0ecb32f3f2371d18efc85733037ee',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -128,9 +128,9 @@
             'dev_requirement' => false,
         ),
         'woocommerce/woocommerce-analytics' => array(
-            'pretty_version' => 'dev-release/0.9.7',
-            'version' => 'dev-release/0.9.7',
-            'reference' => '526d4a1fc6a585a2cc8c4bdc003ee771b982064d',
+            'pretty_version' => 'dev-release',
+            'version' => 'dev-release',
+            'reference' => 'b6428ade76d0ecb32f3f2371d18efc85733037ee',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
