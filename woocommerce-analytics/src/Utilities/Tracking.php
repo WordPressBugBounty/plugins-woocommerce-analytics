@@ -56,4 +56,22 @@ class Tracking {
 
 		self::tracks_event( 'full_sync_completed', $full_sync_properties );
 	}
+
+	/**
+	 * Track when a manual sync action occurs.
+	 *
+	 * @param string $action The sync action - either "started" or "stopped".
+	 */
+	public static function track_manual_sync_action( $action ) {
+		if ( ! in_array( $action, array( 'started', 'stopped' ), true ) ) {
+			return;
+		}
+
+		$properties = array(
+			'action'    => $action,
+			'timestamp' => time(),
+		);
+
+		self::tracks_event( 'manual_sync', $properties );
+	}
 }

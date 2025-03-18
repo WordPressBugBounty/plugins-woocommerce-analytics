@@ -1,7 +1,7 @@
 === WooCommerce Analytics ===
 Contributors: WooCommerce
 Tags: WooCommerce, analytics, order attribution, marketing, business insights
-Stable tag: 0.9.8
+Stable tag: 0.9.9
 Requires at least: 6.5
 Requires PHP: 7.4
 Tested up to: 6.7
@@ -14,7 +14,7 @@ Boost sales and maximize ROI with WooCommerce Analytics. Access order attributio
 
 ### WOOCOMMERCE ANALYTICS – TAKE CONTROL OF YOUR SALES STRATEGY ###
 
-**Note: WooCommerce Analytics is currently in beta. We welcome feedback to improve the final release.**
+**Note: This extension is currently in an early access (beta) stage, which means we’re actively working to improve it based on your feedback. While we strive to provide a seamless experience, please note that some features may still be under development, and occasional bugs may occur. This extension is designed for single-currency stores only. Multi-currency functionality is not supported, which may result in inaccurate analytics for stores operating in multiple currencies. Your input is invaluable in helping us enhance the product, so please don’t hesitate to share your feedback or report any issues.**
 
 WooCommerce Analytics provides merchants with powerful order attribution data, helping identify which channels, sources, devices, and campaigns are driving sales. With advanced insights into customer behavior and marketing effectiveness, WooCommerce Analytics is designed to support data-driven decisions, whether you’re managing a new store or an extensive product catalog.
 
@@ -81,6 +81,12 @@ By identifying top-performing channels and sources, you can allocate your market
 5. Orders by Channel & Source - Combine channel and source data for a more detailed view of your order attribution (e.g., see Paid Ads broken down by Google vs. Facebook vs. Instagram ads).
 
 == Changelog ==
+
+= 0.9.9 - 2025-03-18 =
+* Tweak - Bump minimum WC to 9.5.
+* Tweak - Update beta notice text.
+* Tweak - WC 9.8 compatibility.
+* Update - Better trigger for order attribution report ready email.
 
 = 0.9.8 - 2025-02-26 =
 * Fix - Catch division by zero.

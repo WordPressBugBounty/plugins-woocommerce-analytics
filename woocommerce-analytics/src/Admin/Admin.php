@@ -456,16 +456,6 @@ class Admin implements RegistrableInterface {
 				)
 			);
 			Assets::enqueue_script( 'analytics-main-app' );
-
-			// register dataviews style-index.css.
-			$script_asset = require $this->get_local_build_path() . 'index.asset.php';
-			wp_register_style(
-				'analytics-dataviews',
-				$this->get_plugin_url() . 'build/style-index.css',
-				array( 'wp-components' ),
-				$script_asset['version']
-			);
-			wp_enqueue_style( 'analytics-dataviews' );
 		} else {
 			// Get the CDN URL for the assests.
 			$build_dir = $this->get_cdn_url( self::ANALYTICS_ASSETS_VERSION );
@@ -507,15 +497,6 @@ class Admin implements RegistrableInterface {
 				$version
 			);
 			wp_enqueue_style( 'analytics-main-app' );
-
-			// register dataviews style-index.css.
-			wp_register_style(
-				'analytics-dataviews',
-				$build_dir . 'style-index.css',
-				array( 'wp-components' ),
-				$version
-			);
-			wp_enqueue_style( 'analytics-dataviews' );
 		}
 
 		Connection_Initial_State::render_script( 'analytics-main-app' );
@@ -594,36 +575,36 @@ class Admin implements RegistrableInterface {
 		 */
 		$extras = array(
 			'wc-analytics/dashboard'         => array(
-				'icon' => 'wordpress/navigation',
+				'icon'         => 'wordpress/navigation',
 				'addToPalette' => true,
 			),
 			'wc-analytics/reports'           => array(
-				'icon' => 'wc-analytics/reports',
+				'icon'         => 'wc-analytics/reports',
 				'addToPalette' => true,
 			),
 			'wc-analytics/reports/all'       => array(
-				'icon' => 'wc-analytics/reports',
+				'icon'         => 'wc-analytics/reports',
 				'addToPalette' => true,
 			),
 			'wc-analytics/reports/finances'  => array(
-				'icon' => 'wordpress/payment',
+				'icon'         => 'wordpress/payment',
 				'addToPalette' => true,
 			),
 			'wc-analytics/reports/inventory' => array(
-				'icon' => 'wordpress/tag',
+				'icon'         => 'wordpress/tag',
 				'addToPalette' => true,
 			),
 			'wc-analytics/reports/orders'    => array(
-				'icon' => 'wordpress/receipt',
+				'icon'         => 'wordpress/receipt',
 				'addToPalette' => true,
 			),
 			'wc-analytics/reports/sales'     => array(
-				'icon' => 'wc-analytics/bag',
+				'icon'         => 'wc-analytics/bag',
 				'addToPalette' => true,
 			),
 
 			'wc-analytics/settings'          => array(
-				'icon' => 'wordpress/cog',
+				'icon'         => 'wordpress/cog',
 				'addToPalette' => true,
 			),
 		);
@@ -635,7 +616,7 @@ class Admin implements RegistrableInterface {
 		$reports_subsections = array();
 		if ( isset( $submenu['woocommerce-analytics-reports.php'] ) ) {
 			foreach ( $submenu['woocommerce-analytics-reports.php'] as $item ) {
-				$extra = isset( $extras[ $item[2] ] ) ? $extras[ $item[2] ] : array();
+				$extra                 = isset( $extras[ $item[2] ] ) ? $extras[ $item[2] ] : array();
 				$reports_subsections[] = array(
 					'title'        => $item[0],
 					'path'         => $item[2],
@@ -662,7 +643,7 @@ class Admin implements RegistrableInterface {
 			$analytics_menu['sections'] = array();
 
 			foreach ( $submenu['wc-analytics'] as $item ) {
-				$extra = isset( $extras[ $item[2] ] ) ? $extras[ $item[2] ] : array();
+				$extra   = isset( $extras[ $item[2] ] ) ? $extras[ $item[2] ] : array();
 				$section = array(
 					'title'        => $item[0],
 					'path'         => $item[2],

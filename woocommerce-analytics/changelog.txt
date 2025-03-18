@@ -1,5 +1,11 @@
 *** WooCommerce Analytics Changelog ***
 
+= 0.9.9 - 2025-03-18 =
+* Tweak - Bump minimum WC to 9.5.
+* Tweak - Update beta notice text.
+* Tweak - WC 9.8 compatibility.
+* Update - Better trigger for order attribution report ready email.
+
 = 0.9.8 - 2025-02-26 =
 * Fix - Catch division by zero.
 * Update - Ensure single report ready email is sent.

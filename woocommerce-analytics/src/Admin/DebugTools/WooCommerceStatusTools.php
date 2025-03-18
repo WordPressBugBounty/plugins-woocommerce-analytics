@@ -2,13 +2,13 @@
 
 namespace Automattic\WooCommerce\Analytics\Admin\DebugTools;
 
+use Automattic\Jetpack\Connection\Manager as JetpackManager;
+use Automattic\WooCommerce\Analytics\API\SyncStatus;
 use Automattic\WooCommerce\Analytics\HelperTraits\LoggerTrait;
 use Automattic\WooCommerce\Analytics\HelperTraits\Utilities;
-use Automattic\WooCommerce\Analytics\Logging\LoggerInterface;
-use Automattic\WooCommerce\Analytics\API\SyncStatus;
 use Automattic\WooCommerce\Analytics\Internal\DI\RegistrableInterface;
-use Automattic\Jetpack\Connection\Manager as JetpackManager;
-
+use Automattic\WooCommerce\Analytics\Logging\LoggerInterface;
+use Automattic\WooCommerce\Analytics\Utilities\Tracking;
 
 /**
  * Class WooCommerceStatusTools
@@ -220,6 +220,7 @@ class WooCommerceStatusTools implements RegistrableInterface {
 
 		// Run the full sync.
 		$this->run_full_sync();
+		Tracking::track_manual_sync_action( 'started' );
 		return __( 'Full Sync has been triggered.', 'woocommerce-analytics' );
 	}
 
@@ -249,6 +250,7 @@ class WooCommerceStatusTools implements RegistrableInterface {
 
 		// Stop the full sync.
 		$this->stop_full_sync();
+		Tracking::track_manual_sync_action( 'stopped' );
 		return __( 'Full Sync has been stopped.', 'woocommerce-analytics' );
 	}
 }

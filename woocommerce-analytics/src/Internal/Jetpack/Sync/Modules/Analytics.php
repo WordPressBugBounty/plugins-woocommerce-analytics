@@ -121,6 +121,8 @@ class Analytics extends JetpackSyncModule {
 				'post__in'    => $ids,
 				'post_status' => WooCommerce_HPOS_Orders::get_all_possible_order_status_keys(),
 				'limit'       => -1,
+				'orderby'     => 'id',
+				'order'       => 'DESC',
 			)
 		);
 
@@ -245,33 +247,94 @@ class Analytics extends JetpackSyncModule {
 		// Full sync.
 		add_filter(
 			'jetpack_sync_before_send_jetpack_full_sync_woocommerce_analytics',
-			array( $this, 'expand_order_ids' )
+			array( $this, 'build_full_sync_action_array' )
 		);
 	}
+
 	/**
-	 * Expand the order IDs into full order data for sync.
+	 * Build the full sync action object.
 	 *
-	 * @param array $args The hook parameters.
-	 * @return array The expanded hook parameters.
+	 * @param array $args An array with filtered objects and previous end.
+	 *
+	 * @return array An array with orders and previous end.
 	 */
-	public function expand_order_ids( $args ) {
-		list($order_ids, $previous_end) = $args;
-		$reports_data                   = array();
+	public function build_full_sync_action_array( $args ) {
+		list( $filtered_orders, $previous_end ) = $args;
+		return array(
+			'orders'       => $filtered_orders['objects'],
+			'previous_end' => $previous_end,
+		);
+	}
 
-		foreach ( $order_ids as $order_id ) {
-			$data = $this->get_object_by_id( 'order', $order_id );
-			if ( ! $data ) {
-				continue;
+	/**
+	 * Given the Module Configuration and Status return the next chunk of items to send.
+	 * This function also expands the posts and metadata and filters them based on the maximum size constraints.
+	 *
+	 * @param array $config This module Full Sync configuration.
+	 * @param array $status This module Full Sync status.
+	 * @param int   $chunk_size Chunk size.
+	 *
+	 * @return array
+	 */
+	public function get_next_chunk( $config, $status, $chunk_size ) {
+
+		$order_ids = parent::get_next_chunk( $config, $status, $chunk_size );
+
+		if ( empty( $order_ids ) ) {
+			return array();
+		}
+
+		$orders = $this->get_objects_by_id( 'order', $order_ids );
+
+		// If no orders were fetched, make sure to return the expected structure so that status is updated correctly.
+		if ( empty( $orders ) ) {
+			return array(
+				'object_ids' => $order_ids,
+				'objects'    => array(),
+			);
+		}
+
+		// Filter the orders based on the maximum size constraints.
+		list( $filtered_order_ids, $filtered_orders, ) = $this->filter_analytics_objects_by_size( $orders );
+
+		return array(
+			'object_ids' => $filtered_order_ids,
+			'objects'    => $filtered_orders,
+		);
+	}
+
+	/**
+	 * Filters objects and metadata based on maximum size constraints.
+	 * It always allows the first object with its metadata, even if they exceed the limit.
+	 *
+	 * @param array $objects The array of objects to filter.
+	 *
+	 * @return array An array containing the filtered object IDsand  filtered objects
+	 */
+	public function filter_analytics_objects_by_size( $objects ) {
+		$filtered_objects    = array();
+		$filtered_object_ids = array();
+		$current_size        = 0;
+
+		foreach ( $objects as $key => $value ) {
+			$object_size = strlen( maybe_serialize( $value ) );
+
+			// Always allow the first object.
+			if ( empty( $filtered_object_ids ) || ( $current_size + $object_size ) <= self::MAX_SIZE_FULL_SYNC ) {
+				$filtered_object_ids[]    = $key;
+				$filtered_objects[ $key ] = $value;
+				$current_size            += $object_size;
+			} else {
+				break;
 			}
-
-			$reports_data[] = $data;
 		}
 
 		return array(
-			$reports_data,
-			$previous_end,
+			$filtered_object_ids,
+			$filtered_objects,
 		);
 	}
+
 
 	/**
 	 * Handle Sync analytics reports data.

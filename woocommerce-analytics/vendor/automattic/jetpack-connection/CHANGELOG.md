@@ -5,6 +5,56 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.6.0] - 2025-02-24
+### Added
+- Warn that disconnecting owner account will disconnect all other users first. [#41923]
+
+### Changed
+- Move the API endpoint for unlinking the user to the automattic/jetpack-connection package. [#41398]
+
+## [6.5.0] - 2025-02-17
+### Changed
+- Display connection status on Users page independent of the SSO module. [#41794]
+
+### Fixed
+- Make sure wpcom_id is a string before passing it over as _ui. [#41787]
+
+## [6.4.1] - 2025-02-11
+### Changed
+- Update dependencies.
+
+## [6.4.0] - 2025-02-10
+### Changed
+- Tracks: Add site type to events [#41307]
+- Updated package dependencies. [#41491]
+
+## [6.3.2] - 2025-02-03
+### Changed
+- Updated package dependencies. [#41286]
+
+### Fixed
+- Code: Remove extra params on function calls. [#41263]
+
+## [6.3.1] - 2025-01-27
+### Changed
+- Internal updates.
+
+## [6.3.0] - 2025-01-20
+### Changed
+- Code: Use function-style exit() and die() with a default status code of 0. [#41167]
+- Move WPCOM_REST_API_Proxy_Request trait to the connection package. [#41023]
+- Updated package dependencies. [#41099]
+
+### Fixed
+- Add heartbeat deactivation on site disconnection. [#41117]
+
+## [6.2.2] - 2025-01-06
+### Added
+- Added tests to increase code coverage. [#39963]
+
+### Changed
+- Updated package dependencies. [#40831]
+
 ## [6.2.1] - 2024-12-16
 ### Changed
 - Updated package dependencies. [#40564]
@@ -1271,6 +1321,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Separate the connection library into its own package.
 
+[6.6.0]: https://github.com/Automattic/jetpack-connection/compare/v6.5.0...v6.6.0
+[6.5.0]: https://github.com/Automattic/jetpack-connection/compare/v6.4.1...v6.5.0
+[6.4.1]: https://github.com/Automattic/jetpack-connection/compare/v6.4.0...v6.4.1
+[6.4.0]: https://github.com/Automattic/jetpack-connection/compare/v6.3.2...v6.4.0
+[6.3.2]: https://github.com/Automattic/jetpack-connection/compare/v6.3.1...v6.3.2
+[6.3.1]: https://github.com/Automattic/jetpack-connection/compare/v6.3.0...v6.3.1
+[6.3.0]: https://github.com/Automattic/jetpack-connection/compare/v6.2.2...v6.3.0
+[6.2.2]: https://github.com/Automattic/jetpack-connection/compare/v6.2.1...v6.2.2
 [6.2.1]: https://github.com/Automattic/jetpack-connection/compare/v6.2.0...v6.2.1
 [6.2.0]: https://github.com/Automattic/jetpack-connection/compare/v6.1.1...v6.2.0
 [6.1.1]: https://github.com/Automattic/jetpack-connection/compare/v6.1.0...v6.1.1

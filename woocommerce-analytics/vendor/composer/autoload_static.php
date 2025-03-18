@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit98c8831eacdcde55d4df0fe8244d63ff
+class ComposerStaticInitdd0c71095bebdaad273001f252dfd5fc
 {
     public static $files = array (
         '3773ef3f09c37da5478d578e32b03a4b' => __DIR__ . '/..' . '/automattic/jetpack-assets/actions.php',
@@ -72,7 +72,9 @@ class ComposerStaticInit98c8831eacdcde55d4df0fe8244d63ff
         'Automattic\\Jetpack\\Connection\\Server_Sandbox' => __DIR__ . '/..' . '/automattic/jetpack-connection/src/class-server-sandbox.php',
         'Automattic\\Jetpack\\Connection\\Tokens' => __DIR__ . '/..' . '/automattic/jetpack-connection/src/class-tokens.php',
         'Automattic\\Jetpack\\Connection\\Tokens_Locks' => __DIR__ . '/..' . '/automattic/jetpack-connection/src/class-tokens-locks.php',
+        'Automattic\\Jetpack\\Connection\\Traits\\WPCOM_REST_API_Proxy_Request' => __DIR__ . '/..' . '/automattic/jetpack-connection/src/traits/trait-wpcom-rest-api-proxy-request.php',
         'Automattic\\Jetpack\\Connection\\Urls' => __DIR__ . '/..' . '/automattic/jetpack-connection/src/class-urls.php',
+        'Automattic\\Jetpack\\Connection\\Users_Connection_Admin' => __DIR__ . '/..' . '/automattic/jetpack-connection/src/class-users-connection-admin.php',
         'Automattic\\Jetpack\\Connection\\Utils' => __DIR__ . '/..' . '/automattic/jetpack-connection/src/class-utils.php',
         'Automattic\\Jetpack\\Connection\\Webhooks' => __DIR__ . '/..' . '/automattic/jetpack-connection/src/class-webhooks.php',
         'Automattic\\Jetpack\\Connection\\Webhooks\\Authorize_Redirect' => __DIR__ . '/..' . '/automattic/jetpack-connection/src/webhooks/class-authorize-redirect.php',
@@ -292,9 +294,9 @@ class ComposerStaticInit98c8831eacdcde55d4df0fe8244d63ff
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit98c8831eacdcde55d4df0fe8244d63ff::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit98c8831eacdcde55d4df0fe8244d63ff::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit98c8831eacdcde55d4df0fe8244d63ff::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitdd0c71095bebdaad273001f252dfd5fc::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitdd0c71095bebdaad273001f252dfd5fc::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitdd0c71095bebdaad273001f252dfd5fc::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -41,6 +41,9 @@ class SyncStatus extends WC_REST_Controller implements RegistrableInterface {
 	/** @var string */
 	private const INITIAL_FULL_SYNC_OPTION = 'woocommerce_analytics_initial_full_sync_finished';
 
+	/** @var string */
+	private const EMAIL_NOTIFICATION_SENT_OPTION = 'woocommerce_analytics_email_notification_sent';
+
 	/**
 	 * The base of the REST API route.
 	 *
@@ -84,46 +87,51 @@ class SyncStatus extends WC_REST_Controller implements RegistrableInterface {
 	}
 
 	/**
-	 * Callback for the jetpack_sync_processed_actions action, used to track full sync completion.
+	 * Callback for the jetpack_sync_processed_actions action, used to send notification email
+	 * and track full sync completion.
 	 *
 	 * @param array $actions The actions that were processed.
 	 *
 	 * @return void
 	 */
 	public function on_sync_processed_actions( array $actions ): void {
+		// If full sync has already finished previously, we expect the email notification to have been sent already.
+		$full_sync_ever_finished = get_option( self::INITIAL_FULL_SYNC_OPTION, 0 );
+		if ( $full_sync_ever_finished ) {
+			return;
+		}
+
+		// If the Woocommerce Analytics sync is not finished, then full sync isn't either so we won't need to do anything.
+		$full_status = $this->sync_modules->get_full_sync_immediately()->get_status();
+		if ( empty( $full_status['progress']['woocommerce_analytics']['finished'] ) ) {
+			return;
+		}
+
+		/*
+		 * Send the email notification to the merchant on WooCommerce Analytics sync completion.
+		 * Set the option in order to only send the email once, even if the module is resynced.
+		 */
+		$email_notification_sent = get_option( self::EMAIL_NOTIFICATION_SENT_OPTION, 'no' );
+		if ( 'no' === $email_notification_sent ) {
+			try {
+				AdminFullSyncEmailNotification::send_email_notification();
+				update_option( self::EMAIL_NOTIFICATION_SENT_OPTION, 'yes' );
+			} catch ( \Exception $e ) {
+				$this->logger->log_error( 'Failed to send sync completion email.', __METHOD__ );
+			}
+		}
+
+		// Track full sync completion.
 		foreach ( $actions as $action ) {
 			if ( 'jetpack_full_sync_end' === $action[0] ) {
-				$full_status = $this->sync_modules->get_full_sync_immediately()->get_status();
-
-				if ( empty( $full_status['progress']['woocommerce_analytics'] ) ) {
-					return;
-				}
-
-				$order_sync_finished = $full_status['progress']['woocommerce_analytics']['finished'];
-
-				// Update the option and track the event only if full sync has finished for the first time.
-				if ( $order_sync_finished ) {
-					$full_sync_ever_finished = get_option( self::INITIAL_FULL_SYNC_OPTION, 0 );
-
-					if ( ! $full_sync_ever_finished ) {
-						/*
-						 * The last update_status call in Full_Sync_Immediately::send() doesn't happen until after jetpack_full_sync_end is called.
-						 * So we use the timestamp of jetpack_full_sync_end action to set the finished timestamp in full_status (in testing, they're the same).
-						 * Note: see Year 2038 problem.
-						 */
-						$full_status['finished'] = intval( $action[3] );
-						Tracking::track_full_sync_completed( $full_status );
-
-						// Send the email notification to the merchant for the initial sync.
-						try {
-							AdminFullSyncEmailNotification::send_email_notification();
-						} catch ( \Exception $e ) {
-							$this->logger->log_error( 'Failed to send sync completion email.', __METHOD__ );
-						}
-
-						update_option( self::INITIAL_FULL_SYNC_OPTION, $full_status['finished'] );
-					}
-				}
+				/*
+				 * The last update_status call in Full_Sync_Immediately::send() doesn't happen until after jetpack_full_sync_end is called.
+				 * So we use the timestamp of jetpack_full_sync_end action to set the `finished` timestamp in full_status (in testing, they're the same).
+				 * Note: see Year 2038 problem.
+				 */
+				$full_status['finished'] = intval( $action[3] );
+				Tracking::track_full_sync_completed( $full_status );
+				update_option( self::INITIAL_FULL_SYNC_OPTION, $full_status['finished'] );
 			}
 		}
 	}
@@ -348,7 +356,7 @@ class SyncStatus extends WC_REST_Controller implements RegistrableInterface {
 	}
 
 	/**
-	 * Reset the initial full sync status by removing the option.
+	 * Reset the initial full sync status and email notification sent status by removing the options.
 	 * Mostly used for development and debugging.
 	 *
 	 * @param WP_REST_Request $request Request object.
@@ -359,6 +367,8 @@ class SyncStatus extends WC_REST_Controller implements RegistrableInterface {
 		if ( $this->manager->is_connected() ) {
 			return new WP_Error( 'site_connected', 'Cannot reset initial full sync status while connected.', array( 'status' => 400 ) );
 		}
+
+		delete_option( self::EMAIL_NOTIFICATION_SENT_OPTION );
 
 		if ( delete_option( self::INITIAL_FULL_SYNC_OPTION ) ) {
 			return new WP_REST_Response( array( 'message' => 'Initial full sync status reset successfully.' ), 200 );
