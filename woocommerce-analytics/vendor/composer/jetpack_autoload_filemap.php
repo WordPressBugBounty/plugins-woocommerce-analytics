@@ -7,15 +7,15 @@ $baseDir   = dirname($vendorDir);
 
 return array(
 	'3773ef3f09c37da5478d578e32b03a4b' => array(
-		'version' => '4.0.8.0',
+		'version' => '4.0.14.0',
 		'path'    => $vendorDir . '/automattic/jetpack-assets/actions.php'
 	),
 	'7372b7fb88a9723cf5b76d456eb0b738' => array(
-		'version' => '6.6.0.0',
+		'version' => '6.8.1.0',
 		'path'    => $vendorDir . '/automattic/jetpack-connection/actions.php'
 	),
 	'964d912091ae019eb62b5eab8f3f02ab' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-hotfix/0.9.10',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/functions.php'
 	),
 );

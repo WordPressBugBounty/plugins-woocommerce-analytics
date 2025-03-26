@@ -126,12 +126,22 @@ class Analytics extends JetpackSyncModule {
 			)
 		);
 
+		// Get the order stats data for the orders.
+		$order_stats_items = $this->get_order_stats_items( $ids );
+		$order_stats_data  = array();
+		if ( ! empty( $order_stats_items ) ) {
+			$order_stats_data = array_column( $order_stats_items, null, 'order_id' );
+		}
+
 		$orders_data     = array();
 		$found_order_ids = array();
 		foreach ( $orders as $order ) {
 			$order_id                 = $order->get_id();
 			$found_order_ids[]        = $order_id;
 			$orders_data[ $order_id ] = $this->build_woocommerce_analytics_reports_data( $order );
+			if ( isset( $order_stats_data[ $order_id ] ) ) {
+				$this->do_order_status_discrepancy_check( $order, $order_stats_data[ $order_id ] );
+			}
 		}
 
 		// Check for missing order_ids in wc_order_stats table for orders that were not found.
@@ -484,8 +494,8 @@ class Analytics extends JetpackSyncModule {
 
 		// If the order does not exit, check if the stats item is present in the wc_order_stats table.
 		if ( ! $order ) {
-			$order_stats_data = $this->get_order_stats_data_from_db( $order_id );
-			return $order_stats_data;
+			$order_stats_data_from_db = $this->get_order_stats_data_from_db( $order_id );
+			return $order_stats_data_from_db;
 		}
 
 		$order_stats_data = array(
@@ -595,6 +605,24 @@ class Analytics extends JetpackSyncModule {
 	}
 
 	/**
+	 * Get the order stats rows for a given order IDs.
+	 *
+	 * @param array $order_ids The order IDs.
+	 * @return array|null Database query result in format specified by $output or null on failure.
+	 */
+	private function get_order_stats_items( $order_ids ) {
+		global $wpdb;
+
+		$placeholders = implode( ',', array_fill( 0, count( $order_ids ), '%d' ) );
+		$query        = $wpdb->prepare(
+			"SELECT * FROM {$this->table()} WHERE order_id IN ( $placeholders )", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
+			$order_ids
+		);
+
+		return $wpdb->get_results( $query, ARRAY_A ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+	}
+
+	/**
 	 * Get the order stats data from the database.
 	 *
 	 * @param int $order_id The order ID.
@@ -607,10 +635,43 @@ class Analytics extends JetpackSyncModule {
 			return false;
 		}
 
+		// Convert date strings to datetime objects.
+		$order_stats_data['date_created']   = self::datetime_to_object( $order_stats_data['date_created'] );
 		$order_stats_data['date_completed'] = self::datetime_to_object( $order_stats_data['date_completed'] );
 		$order_stats_data['date_paid']      = self::datetime_to_object( $order_stats_data['date_paid'] );
-		$order_stats_data['date_completed'] = self::datetime_to_object( $order_stats_data['date_completed'] );
 
 		return $order_stats_data;
+	}
+
+	/**
+	 * Perform an order status discrepancy check between the order object and the item in the wc_order_stats table.
+	 *
+	 * @param WC_Order $order WC_Order object.
+	 * @param array    $order_stats_item The order stats item.
+	 *
+	 * @return void
+	 */
+	private function do_order_status_discrepancy_check( $order, $order_stats_item = array() ) {
+		if ( ! $order instanceof WC_Abstract_Order ) {
+			return;
+		}
+
+		$order_id = $order->get_id();
+
+		// If the order_stats_item is empty, then fetch it from the wc_order_stats table.
+		if ( empty( $order_stats_item ) ) {
+			$order_stats_item = $this->get_order_stats_data_from_db( $order_id );
+		}
+
+		// Check for discrepancy in the order status. Happens in old orders that were not updated and hence the OrderStatsFixer did not run.
+		$normalized_order_status = self::normalize_order_status( $order->get_status() );
+		if ( $order_stats_item && $normalized_order_status !== $order_stats_item['status'] ) {
+			/**
+			 * Trigger the action to fix the order stats. The OrderStatusFixer should be hooked to this action.
+			 *
+			 * @param int $order_id The order ID.
+			 */
+			do_action( 'woocommerce_analytics_incorrect_order_status_detected', $order_id );
+		}
 	}
 }

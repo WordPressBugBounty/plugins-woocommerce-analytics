@@ -11,6 +11,8 @@ use Automattic\WooCommerce\Utilities\OrderUtil;
 
 use Automattic\WooCommerce\Analytics\Internal\DI\RegistrableInterface;
 use Automattic\WooCommerce\Analytics\HelperTraits\Utilities;
+use Automattic\WooCommerce\Analytics\HelperTraits\LoggerTrait;
+use Automattic\WooCommerce\Analytics\Logging\LoggerInterface;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -31,12 +33,22 @@ class OrderStatsFixer implements RegistrableInterface {
 	public static $name = 'order_stats_fixer';
 
 	use Utilities;
+	use LoggerTrait;
 
 	/**
 	 * Scheduler traits.
 	 */
 	use SchedulerTraits {
 		init as scheduler_init;
+	}
+
+	/**
+	 * OrderStatsFixer constructor.
+	 *
+	 * @param LoggerInterface $logger The logger object.
+	 */
+	public function __construct( LoggerInterface $logger ) {
+		$this->set_logger( $logger );
 	}
 
 	/**
@@ -70,6 +82,7 @@ class OrderStatsFixer implements RegistrableInterface {
 		 */
 		add_filter( 'woocommerce_analytics_update_order_stats_data', array( $this, 'update_order_stats_data' ) );
 		add_action( 'woocommerce_analytics_update_order_stats', array( $this, 'fix_incorrect_order_status' ), 5, 1 );
+		add_action( 'woocommerce_analytics_incorrect_order_status_detected', array( $this, 'fix_incorrect_order_status' ), 5, 1 );
 
 		/**
 		 * Delete orphaned refund orders from the wc_order_stats table.
@@ -114,6 +127,7 @@ class OrderStatsFixer implements RegistrableInterface {
 
 		$order = wc_get_order( $order_id );
 		if ( ! $order ) {
+			$this->get_logger()->log_message( sprintf( 'Order #%d not found, cannot fix incorrect order status', $order_id ), __METHOD__ );
 			return -1;
 		}
 
@@ -122,14 +136,51 @@ class OrderStatsFixer implements RegistrableInterface {
 			return -1;
 		}
 
-		$order_status = self::normalize_order_status( $order->get_status() );
-		$data         = array( 'status' => $order_status );
-		$where        = array( 'order_id' => $order_id );
-		$format       = array( '%s' );
-		$where_format = array( '%d' );
-		$result       = $wpdb->update( $order_stats_table, $data, $where, $format, $where_format );
+		// Get current status in order_stats table.
+		$current_status_query = $wpdb->prepare(
+			"SELECT status FROM {$order_stats_table} WHERE order_id = %d", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+			$order_id
+		);
+		$current_status       = $wpdb->get_var( $current_status_query ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		$order_status         = self::normalize_order_status( $order->get_status() );
 
-		return is_numeric( $result );
+		// Log the discrepancy before making any changes.
+		if ( $current_status !== $order_status ) {
+			$this->get_logger()->log_message(
+				sprintf(
+					'Order status discrepancy detected for order #%d. WC_Orders status: "%s", Order_Stats status: "%s"',
+					$order_id,
+					$order_status,
+					$current_status
+				),
+				__METHOD__
+			);
+		}
+
+		// Only update if there's actually a difference.
+		if ( $current_status !== $order_status ) {
+			$data         = array( 'status' => $order_status );
+			$where        = array( 'order_id' => $order_id );
+			$format       = array( '%s' );
+			$where_format = array( '%d' );
+			$result       = $wpdb->update( $order_stats_table, $data, $where, $format, $where_format );
+
+			if ( is_numeric( $result ) && $result > 0 ) {
+				$this->get_logger()->log_message(
+					sprintf(
+						'Fixed order status discrepancy for refund order #%d. Changed from "%s" to "%s"',
+						$order_id,
+						$current_status,
+						$order_status
+					),
+					__METHOD__
+				);
+			}
+
+			return is_numeric( $result );
+		}
+
+		return true; // No change needed.
 	}
 
 	/**

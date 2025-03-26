@@ -1,5 +1,9 @@
 *** WooCommerce Analytics Changelog ***
 
+= 0.9.10 - 2025-03-26 =
+* Fix - Discrepancies in checksums for order_stats.
+* Update - Jetpack sync package to 4.9.x.
+
 = 0.9.9 - 2025-03-18 =
 * Tweak - Bump minimum WC to 9.5.
 * Tweak - Update beta notice text.

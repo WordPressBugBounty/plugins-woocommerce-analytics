@@ -3,7 +3,7 @@
  * Plugin Name:          WooCommerce Analytics
  * Plugin URI:           https://woocommerce.com
  * Description:          Unlock actionable insights to boost sales and maximize your marketing ROI with WooCommerce Analytics.
- * Version:              0.9.9
+ * Version:              0.9.10
  * Author:               WooCommerce
  * Author URI:           https://woocommerce.com/
  * Text Domain:          woocommerce-analytics
@@ -25,7 +25,7 @@ use Automattic\WooCommerce\Utilities\FeaturesUtil;
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'WC_ANALYTICS_VERSION', '0.9.9' ); // WRCS: DEFINED_VERSION.
+define( 'WC_ANALYTICS_VERSION', '0.9.10' ); // WRCS: DEFINED_VERSION.
 define( 'WC_ANALYTICS_MIN_PHP_VER', '7.4' );
 define( 'WC_ANALYTICS_MIN_WC_VER', '9.5.0' );
 define( 'WC_ANALYTICS_FILE', __FILE__ );
