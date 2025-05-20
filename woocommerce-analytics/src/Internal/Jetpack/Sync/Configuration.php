@@ -27,10 +27,8 @@ class Configuration implements RegistrableInterface {
 		add_action( 'plugins_loaded', array( $this, 'initialize_jetpack' ), 1 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_jetpack_connection_script' ) );
 
-		if ( $this->can_site_sync_orders() ) {
-			add_filter( 'jetpack_full_sync_config', array( $this, 'expand_full_sync_config' ) );
-			add_filter( 'jetpack_sync_checksum_allowed_tables', array( $this, 'add_order_stats_to_checksum' ) );
-		}
+		add_filter( 'jetpack_full_sync_config', array( $this, 'expand_full_sync_config' ) );
+		add_filter( 'jetpack_sync_checksum_allowed_tables', array( $this, 'add_order_stats_to_checksum' ) );
 	}
 
 	/**
@@ -105,6 +103,10 @@ class Configuration implements RegistrableInterface {
 	 * @return array The modified full sync configuration.
 	 */
 	public function expand_full_sync_config( array $config ): array {
+		if ( ! $this->can_site_sync_orders() ) {
+			return $config;
+		}
+
 		if ( ! isset( $config['woocommerce_analytics'] ) ) {
 			$config = array( 'woocommerce_analytics' => 1 ) + $config;
 		}
@@ -119,6 +121,10 @@ class Configuration implements RegistrableInterface {
 	 * @return array The modified checksum allowed tables.
 	 */
 	public function add_order_stats_to_checksum( array $tables ): array {
+		if ( ! $this->can_site_sync_orders() ) {
+			return $tables;
+		}
+
 		global $wpdb;
 		$order_stats_checksum_table = array(
 			'wc_order_stats' => array(

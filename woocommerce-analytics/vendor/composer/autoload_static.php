@@ -266,7 +266,7 @@ class ComposerStaticInitd22a48e07d718bac00f1da8081aa2fc8
         'Automattic\\WooCommerce\\Analytics\\HelperTraits\\Utilities' => __DIR__ . '/../..' . '/src/HelperTraits/Utilities.php',
         'Automattic\\WooCommerce\\Analytics\\Internal\\DI\\Configuration' => __DIR__ . '/../..' . '/src/Internal/DI/Configuration.php',
         'Automattic\\WooCommerce\\Analytics\\Internal\\DI\\RegistrableInterface' => __DIR__ . '/../..' . '/src/Internal/DI/RegistrableInterface.php',
-        'Automattic\\WooCommerce\\Analytics\\Internal\\FullSyncCheck\\AdminFullSyncEmailNotification' => __DIR__ . '/../..' . '/src/Internal/FullSyncCheck/AdminFullSyncEmailNotification.php',
+        'Automattic\\WooCommerce\\Analytics\\Internal\\FullSyncCheck\\AdminFullSyncCompleteEmail' => __DIR__ . '/../..' . '/src/Internal/FullSyncCheck/AdminFullSyncCompleteEmail.php',
         'Automattic\\WooCommerce\\Analytics\\Internal\\Jetpack\\SyncModules' => __DIR__ . '/../..' . '/src/Internal/Jetpack/SyncModules.php',
         'Automattic\\WooCommerce\\Analytics\\Internal\\Jetpack\\Sync\\Configuration' => __DIR__ . '/../..' . '/src/Internal/Jetpack/Sync/Configuration.php',
         'Automattic\\WooCommerce\\Analytics\\Internal\\Jetpack\\Sync\\Modules\\Analytics' => __DIR__ . '/../..' . '/src/Internal/Jetpack/Sync/Modules/Analytics.php',

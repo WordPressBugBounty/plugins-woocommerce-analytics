@@ -1,10 +1,10 @@
 === WooCommerce Analytics ===
 Contributors: WooCommerce
 Tags: WooCommerce, analytics, order attribution, marketing, business insights
-Stable tag: 0.9.10
+Stable tag: 0.9.11
 Requires at least: 6.5
 Requires PHP: 7.4
-Tested up to: 6.7
+Tested up to: 6.8
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -82,9 +82,15 @@ By identifying top-performing channels and sources, you can allocate your market
 
 == Changelog ==
 
-= 0.9.10 - 2025-03-26 =
-* Fix – Discrepancies in checksums for order_stats.
-* Update – Jetpack sync package to 4.9.x.
+= 0.9.11 - 2025-05-20 =
+* Tweak - WC 9.9 compatibility.
+* Tweak - WP 6.8 compatibility.
+* Update - Change hook to register plugin.
+* Update - Use WC_Email instead of MerchantEmailNotifications.
+
+= 0.9.10 - 2025-05-20 =
+* Tweak - WC 9.9 compatibility.
+* Tweak - WP 6.8 compatibility.
 
 = 0.9.9 - 2025-03-18 =
 * Tweak - Bump minimum WC to 9.5.

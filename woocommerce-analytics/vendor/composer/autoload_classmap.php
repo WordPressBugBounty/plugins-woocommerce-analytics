@@ -235,7 +235,7 @@ return array(
     'Automattic\\WooCommerce\\Analytics\\HelperTraits\\Utilities' => $baseDir . '/src/HelperTraits/Utilities.php',
     'Automattic\\WooCommerce\\Analytics\\Internal\\DI\\Configuration' => $baseDir . '/src/Internal/DI/Configuration.php',
     'Automattic\\WooCommerce\\Analytics\\Internal\\DI\\RegistrableInterface' => $baseDir . '/src/Internal/DI/RegistrableInterface.php',
-    'Automattic\\WooCommerce\\Analytics\\Internal\\FullSyncCheck\\AdminFullSyncEmailNotification' => $baseDir . '/src/Internal/FullSyncCheck/AdminFullSyncEmailNotification.php',
+    'Automattic\\WooCommerce\\Analytics\\Internal\\FullSyncCheck\\AdminFullSyncCompleteEmail' => $baseDir . '/src/Internal/FullSyncCheck/AdminFullSyncCompleteEmail.php',
     'Automattic\\WooCommerce\\Analytics\\Internal\\Jetpack\\SyncModules' => $baseDir . '/src/Internal/Jetpack/SyncModules.php',
     'Automattic\\WooCommerce\\Analytics\\Internal\\Jetpack\\Sync\\Configuration' => $baseDir . '/src/Internal/Jetpack/Sync/Configuration.php',
     'Automattic\\WooCommerce\\Analytics\\Internal\\Jetpack\\Sync\\Modules\\Analytics' => $baseDir . '/src/Internal/Jetpack/Sync/Modules/Analytics.php',

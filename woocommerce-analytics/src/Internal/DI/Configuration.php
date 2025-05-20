@@ -9,7 +9,6 @@ use Automattic\WooCommerce\Analytics\Admin\DebugTools\WooCommerceStatusTools;
 use Automattic\WooCommerce\Analytics\Admin\Admin;
 use Automattic\WooCommerce\Analytics\API\ApiProxy;
 use Automattic\WooCommerce\Analytics\API\SyncStatus;
-use Automattic\WooCommerce\Analytics\Internal\Jetpack\Sync\Configuration as JetpackConfiguration;
 use Automattic\WooCommerce\Analytics\Logging\DebugLogger;
 use Automattic\WooCommerce\Analytics\Logging\LoggerInterface;
 use Automattic\WooCommerce\Analytics\Utilities\OrderStatsFixer;
@@ -46,7 +45,6 @@ class Configuration {
 
 			RegistrableInterface::class => array(
 				get( Admin::class ),
-				get( JetpackConfiguration::class ),
 				get( SyncStatus::class ),
 				get( ApiProxy::class ),
 				get( WooCommerceStatusTools::class ),

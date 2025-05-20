@@ -4,6 +4,7 @@ namespace Automattic\WooCommerce\Analytics\Admin;
 
 use Automattic\Jetpack\Assets;
 use Automattic\Jetpack\Connection\Initial_State as Connection_Initial_State;
+use Automattic\Jetpack\Status;
 use Automattic\WooCommerce\Analytics\HelperTraits\Utilities;
 use Automattic\WooCommerce\Analytics\Internal\DI\RegistrableInterface;
 use Automattic\WooCommerce\Analytics\Utilities\Features;
@@ -176,7 +177,7 @@ class Admin implements RegistrableInterface {
 		wc_admin_register_page(
 			array(
 				'id'       => 'woocommerce-analytics-avg-order-value-over-time',
-				'title'    => __( 'Average Order Value Over Time', 'woocommerce-analytics' ),
+				'title'    => __( 'Average order value over time', 'woocommerce-analytics' ),
 				'parent'   => 'woocommerce-analytics-mvp',
 				'path'     => '/woocommerce-analytics/avg-order-value-over-time',
 				'nav_args' => array(
@@ -189,7 +190,7 @@ class Admin implements RegistrableInterface {
 		wc_admin_register_page(
 			array(
 				'id'       => 'woocommerce-analytics-avg-items-per-order-over-time',
-				'title'    => __( 'Average Items Per Order Over Time', 'woocommerce-analytics' ),
+				'title'    => __( 'Average items per order over time', 'woocommerce-analytics' ),
 				'parent'   => 'woocommerce-analytics-mvp',
 				'path'     => '/woocommerce-analytics/avg-items-per-order-over-time',
 				'nav_args' => array(
@@ -230,7 +231,7 @@ class Admin implements RegistrableInterface {
 		add_submenu_page(
 			'wc-analytics',
 			__( 'Analytics Reports', 'woocommerce-analytics' ),
-			__( 'Reports', 'woocommerce-analytics' ),
+			__( 'All Reports', 'woocommerce-analytics' ),
 			'view_woocommerce_reports',
 			'wc-analytics/reports',
 			array( $this, 'render_admin_layout_container' ),
@@ -276,33 +277,33 @@ class Admin implements RegistrableInterface {
 			array( $this, 'render_admin_layout_container' ),
 		);
 
-		// Reports > Orders Over Time.
+		// Reports > Orders > Orders Over Time.
 		add_submenu_page(
-			'woocommerce-analytics-reports.php', // Hack to make the page hidden from the menu.
-			__( 'Reports / Orders Over Time', 'woocommerce-analytics' ),
-			__( 'Orders Over Time', 'woocommerce-analytics' ),
+			'woocommerce-analytics-orders-reports.php', // Hack to make the page hidden from the menu.
+			__( 'Orders over time', 'woocommerce-analytics' ),
+			__( 'Orders over time', 'woocommerce-analytics' ),
 			'view_woocommerce_reports',
-			'wc-analytics/reports/orders-over-time',
+			'wc-analytics/reports/orders/orders-over-time',
 			array( $this, 'render_admin_layout_container' ),
 		);
 
-		// Reports > Average Order Value Over Time.
+		// Reports > Orders > Average Order Value Over Time.
 		add_submenu_page(
-			'woocommerce-analytics-reports.php', // Hack to make the page hidden from the menu.
-			__( 'Reports / Average Order Value Over Time', 'woocommerce-analytics' ),
-			__( 'Average Order Value Over Time', 'woocommerce-analytics' ),
+			'woocommerce-analytics-orders-reports.php', // Hack to make the page hidden from the menu.
+			__( 'Average order value over time', 'woocommerce-analytics' ),
+			__( 'Average order value over time', 'woocommerce-analytics' ),
 			'view_woocommerce_reports',
-			'wc-analytics/reports/avg-order-value-over-time',
+			'wc-analytics/reports/orders/avg-order-value-over-time',
 			array( $this, 'render_admin_layout_container' ),
 		);
 
-		// Reports > Average Items Per Order Over Time.
+		// Reports > Orders > Average Items Per Order Over Time.
 		add_submenu_page(
-			'woocommerce-analytics-reports.php', // Hack to make the page hidden from the menu.
-			__( 'Reports / Average Items Per Order Over Time', 'woocommerce-analytics' ),
-			__( 'Average Items Per Order Over Time', 'woocommerce-analytics' ),
+			'woocommerce-analytics-orders-reports.php', // Hack to make the page hidden from the menu.
+			__( 'Average items per order over time', 'woocommerce-analytics' ),
+			__( 'Average items per order over time', 'woocommerce-analytics' ),
 			'view_woocommerce_reports',
-			'wc-analytics/reports/avg-items-per-order-over-time',
+			'wc-analytics/reports/orders/avg-items-per-order-over-time',
 			array( $this, 'render_admin_layout_container' ),
 		);
 
@@ -313,6 +314,56 @@ class Admin implements RegistrableInterface {
 			__( 'Sales', 'woocommerce-analytics' ),
 			'view_woocommerce_reports',
 			'wc-analytics/reports/sales',
+			array( $this, 'render_admin_layout_container' ),
+		);
+
+		// Reports > Sales -> Sales by channel.
+		add_submenu_page(
+			'woocommerce-analytics-sales-reports.php', // Hack to make the page hidden from the menu.
+			__( 'Sales by channel', 'woocommerce-analytics' ),
+			__( 'Sales by channel', 'woocommerce-analytics' ),
+			'view_woocommerce_reports',
+			'wc-analytics/reports/sales/channels',
+			array( $this, 'render_admin_layout_container' ),
+		);
+
+		// Reports > Sales -> Sales by sources.
+		add_submenu_page(
+			'woocommerce-analytics-sales-reports.php', // Hack to make the page hidden from the menu.
+			__( 'Sales by sources', 'woocommerce-analytics' ),
+			__( 'Sales by sources', 'woocommerce-analytics' ),
+			'view_woocommerce_reports',
+			'wc-analytics/reports/sales/sources',
+			array( $this, 'render_admin_layout_container' ),
+		);
+
+		// Reports > Sales -> Sales by campaign.
+		add_submenu_page(
+			'woocommerce-analytics-sales-reports.php', // Hack to make the page hidden from the menu.
+			__( 'Sales by campaign', 'woocommerce-analytics' ),
+			__( 'Sales by campaign', 'woocommerce-analytics' ),
+			'view_woocommerce_reports',
+			'wc-analytics/reports/sales/campaigns',
+			array( $this, 'render_admin_layout_container' ),
+		);
+
+		// Reports > Sales -> Sales by devices.
+		add_submenu_page(
+			'woocommerce-analytics-sales-reports.php', // Hack to make the page hidden from the menu.
+			__( 'Sales by devices', 'woocommerce-analytics' ),
+			__( 'Sales by devices', 'woocommerce-analytics' ),
+			'view_woocommerce_reports',
+			'wc-analytics/reports/sales/devices',
+			array( $this, 'render_admin_layout_container' ),
+		);
+
+		// Reports > Sales -> Sales by channel+sources.
+		add_submenu_page(
+			'woocommerce-analytics-sales-reports.php', // Hack to make the page hidden from the menu.
+			__( 'Sales by channel + sources', 'woocommerce-analytics' ),
+			__( 'Sales by channel + sources', 'woocommerce-analytics' ),
+			'view_woocommerce_reports',
+			'wc-analytics/reports/sales/channels-sources',
 			array( $this, 'render_admin_layout_container' ),
 		);
 
@@ -333,7 +384,7 @@ class Admin implements RegistrableInterface {
 	 */
 	public function render_admin_layout_container(): void {
 		?>
-		<div id="wc-analytics-admin-app" class="wc-analytics-admin-app admin-app">
+		<div id="wc-analytics-admin-app" class="wc-analytics-admin-app admin-app wc-analytics-admin-app-loading">
 			<?php esc_html_e( 'Loading…', 'woocommerce-analytics' ); ?>
 		</div>
 		<?php
@@ -419,11 +470,19 @@ class Admin implements RegistrableInterface {
 			'admin_page_wc-analytics/reports/all',
 			'admin_page_wc-analytics/reports/finances',
 			'admin_page_wc-analytics/reports/inventory',
+
 			'admin_page_wc-analytics/reports/orders',
+			'admin_page_wc-analytics/reports/orders/orders-over-time',
+			'admin_page_wc-analytics/reports/orders/avg-order-value-over-time',
+			'admin_page_wc-analytics/reports/orders/avg-items-per-order-over-time',
+
 			'admin_page_wc-analytics/reports/sales',
-			'admin_page_wc-analytics/reports/orders-over-time',
-			'admin_page_wc-analytics/reports/avg-order-value-over-time',
-			'admin_page_wc-analytics/reports/avg-items-per-order-over-time',
+			'admin_page_wc-analytics/reports/sales/channels',
+			'admin_page_wc-analytics/reports/sales/sources',
+			'admin_page_wc-analytics/reports/sales/campaigns',
+			'admin_page_wc-analytics/reports/sales/devices',
+			'admin_page_wc-analytics/reports/sales/channels-sources',
+
 			'analytics-mvp_page_wc-analytics/settings',
 		);
 
@@ -456,6 +515,17 @@ class Admin implements RegistrableInterface {
 				)
 			);
 			Assets::enqueue_script( 'analytics-main-app' );
+
+			// Add Jetpack offline mode status to window object for local development.
+			wp_add_inline_script(
+				'analytics-main-app',
+				'window.wcAnalyticsJetpackStatus = ' . wp_json_encode(
+					array(
+						'isOfflineMode' => ( new Status() )->is_offline_mode(),
+					)
+				) . ';',
+				'before'
+			);
 		} else {
 			// Get the CDN URL for the assests.
 			$build_dir = $this->get_cdn_url( self::ANALYTICS_ASSETS_VERSION );
@@ -568,6 +638,18 @@ class Admin implements RegistrableInterface {
 
 		$analytics_menu = array();
 
+		// Orders categories.
+		$orders_categories = array(
+			'slug' => 'orders',
+			'name' => __( 'Orders', 'woocommerce-analytics' ),
+		);
+
+		// Sales categories.
+		$sales_categories = array(
+			'slug' => 'sales',
+			'name' => __( 'Sales', 'woocommerce-analytics' ),
+		);
+
 		/*
 		 * Map with extra data for the WooCommerce Analytics menu items.
 		 * - icon: The icon ID for the menu item.
@@ -594,13 +676,92 @@ class Admin implements RegistrableInterface {
 				'icon'         => 'wordpress/tag',
 				'addToPalette' => true,
 			),
+
+			// Orders.
 			'wc-analytics/reports/orders'    => array(
 				'icon'         => 'wordpress/receipt',
 				'addToPalette' => true,
 			),
-			'wc-analytics/reports/sales'     => array(
+
+			// Orders -> Orders over time.
+			'wc-analytics/reports/orders/orders-over-time' => array(
+				'icon'          => 'wordpress/receipt',
+				'category'      => $orders_categories,
+				'author'        => 'WooCommerce',
+				'addToPalette'  => true,
+				'showInSidebar' => false,
+				'viewParam'     => 'orders_no',
+			),
+
+			// Orders -> Avg order value over time.
+			'wc-analytics/reports/orders/avg-order-value-over-time' => array(
+				'icon'          => 'wordpress/receipt',
+				'category'      => $orders_categories,
+				'author'        => 'WooCommerce',
+				'addToPalette'  => true,
+				'showInSidebar' => false,
+				'viewParam'     => 'average_order_value',
+			),
+
+			// Orders -> Avg items per order over time.
+			'wc-analytics/reports/orders/avg-items-per-order-over-time' => array(
+				'icon'          => 'wordpress/receipt',
+				'category'      => $orders_categories,
+				'author'        => 'WooCommerce',
+				'addToPalette'  => true,
+				'showInSidebar' => false,
+				'viewParam'     => 'avg_items',
+			),
+
+			// Sales.
+			'wc-analytics/reports/sales' => array(
 				'icon'         => 'wc-analytics/bag',
 				'addToPalette' => true,
+			),
+
+			// Sales -> Sales by channel.
+			'wc-analytics/reports/sales/channels' => array(
+				'icon'         => 'wc-analytics/bag',
+				'category'     => $sales_categories,
+				'addToPalette' => true,
+				'author'       => 'WooCommerce',
+				'viewParam'    => 'channel',
+			),
+
+			// Sales -> Sales by sources.
+			'wc-analytics/reports/sales/sources' => array(
+				'icon'         => 'wc-analytics/bag',
+				'category'     => $sales_categories,
+				'addToPalette' => true,
+				'author'       => 'WooCommerce',
+				'viewParam'   => 'source',
+			),
+
+			// Sales -> Sales by campaign.
+			'wc-analytics/reports/sales/campaigns' => array(
+				'icon'         => 'wc-analytics/bag',
+				'category'     => $sales_categories,
+				'addToPalette' => true,
+				'author'       => 'WooCommerce',
+				'viewParam'   => 'campaign',
+			),
+
+			// Sales -> Sales by devices.
+			'wc-analytics/reports/sales/devices' => array(
+				'icon'         => 'wc-analytics/bag',
+				'category'     => $sales_categories,
+				'addToPalette' => true,
+				'author'       => 'WooCommerce',
+				'viewParam'   => 'device',
+			),
+
+			// Sales -> Sales by channel + sources.
+			'wc-analytics/reports/sales/channels-sources' => array(
+				'icon'         => 'wc-analytics/bag',
+				'category'     => $sales_categories,
+				'addToPalette' => true,
+				'author'       => 'WooCommerce',
+				'viewParam'   => 'channel-source',
 			),
 
 			'wc-analytics/settings'          => array(
@@ -613,16 +774,65 @@ class Admin implements RegistrableInterface {
 		 * Create Reports subsections,
 		 * based on the `woocommerce-analytics-reports.php` slug
 		 */
+
+		$reports_orders_subsections = array();
+		if ( isset( $submenu['woocommerce-analytics-orders-reports.php'] ) ) {
+			foreach ( $submenu['woocommerce-analytics-orders-reports.php'] as $item ) {
+				$extra                 = isset( $extras[ $item[2] ] ) ? $extras[ $item[2] ] : array();
+				$reports_orders_subsections[] = array(
+					'title'         => $item[0],
+					'path'          => $item[2],
+					'iconId'        => $extra['icon'] ?? '',
+					'addToPalette'  => $extra['addToPalette'] ?? false,
+					'showInSidebar' => $extra['showInSidebar'] ?? true,
+					'category'      => $extra['category'] ?? '',
+					'author'        => $extra['author'] ?? '',
+					'viewParam'     => $extra['viewParam'] ?? '',
+				);
+			}
+		}
+
+		$reports_sales_subsections = array();
+		if ( isset( $submenu['woocommerce-analytics-sales-reports.php'] ) ) {
+			foreach ( $submenu['woocommerce-analytics-sales-reports.php'] as $item ) {
+				$extra                 = isset( $extras[ $item[2] ] ) ? $extras[ $item[2] ] : array();
+				$reports_sales_subsections[] = array(
+					'title'         => $item[0],
+					'path'          => $item[2],
+					'iconId'        => $extra['icon'] ?? '',
+					'addToPalette'  => $extra['addToPalette'] ?? false,
+					'showInSidebar' => $extra['showInSidebar'] ?? true,
+					'category'      => $extra['category'] ?? '',
+					'author'        => $extra['author'] ?? '',
+					'viewParam'     => $extra['viewParam'] ?? '',
+				);
+			}
+		}
+
 		$reports_subsections = array();
 		if ( isset( $submenu['woocommerce-analytics-reports.php'] ) ) {
 			foreach ( $submenu['woocommerce-analytics-reports.php'] as $item ) {
 				$extra                 = isset( $extras[ $item[2] ] ) ? $extras[ $item[2] ] : array();
-				$reports_subsections[] = array(
-					'title'        => $item[0],
-					'path'         => $item[2],
-					'iconId'       => $extra['icon'] ?? '',
-					'addToPalette' => $extra['addToPalette'] ?? false,
+				$report = array(
+					'title'         => $item[0],
+					'path'          => $item[2],
+					'iconId'        => $extra['icon'] ?? '',
+					'addToPalette'  => $extra['addToPalette'] ?? false,
+					'showInSidebar' => $extra['showInSidebar'] ?? true,
+					'subsections'   => array(),
 				);
+
+				// Populate the reports orders subsections.
+				if ( 'wc-analytics/reports/orders' === $item[2] ) {
+					$report['subsections'] = $reports_orders_subsections;
+				}
+
+				// Populate the reports sales subsections.
+				if ( 'wc-analytics/reports/sales' === $item[2] ) {
+					$report['subsections'] = $reports_sales_subsections;
+				}
+
+				array_push( $reports_subsections, $report );
 			}
 		}
 

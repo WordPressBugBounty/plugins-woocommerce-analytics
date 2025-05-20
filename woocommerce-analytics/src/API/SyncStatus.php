@@ -5,11 +5,10 @@ declare( strict_types=1 );
 namespace Automattic\WooCommerce\Analytics\API;
 
 use Automattic\Jetpack\Connection\Manager as JetpackManager;
-use Automattic\Jetpack\Sync\Modules\Full_Sync_Immediately;
 use Automattic\WooCommerce\Analytics\HelperTraits\LoggerTrait;
 use Automattic\WooCommerce\Analytics\HelperTraits\Utilities;
 use Automattic\WooCommerce\Analytics\Internal\DI\RegistrableInterface;
-use Automattic\WooCommerce\Analytics\Internal\FullSyncCheck\AdminFullSyncEmailNotification;
+use Automattic\WooCommerce\Analytics\Internal\FullSyncCheck\AdminFullSyncCompleteEmail;
 use Automattic\WooCommerce\Analytics\Internal\Jetpack\SyncModules;
 use Automattic\WooCommerce\Analytics\Logging\LoggerInterface;
 use Automattic\WooCommerce\Analytics\Utilities\Tracking;
@@ -84,6 +83,38 @@ class SyncStatus extends WC_REST_Controller implements RegistrableInterface {
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
 
 		add_action( 'jetpack_sync_processed_actions', array( $this, 'on_sync_processed_actions' ) );
+
+		add_filter( 'woocommerce_email_classes', array( $this, 'maybe_register_full_sync_complete_email' ), 20 );
+	}
+
+	/**
+	 * Registers the Full Sync Complete email with WooCommerce if:
+	 *  - the store is connected to Jetpack.
+	 *  - the full sync has never finished.
+	 *
+	 * @param WC_Email[] $email_classes All existing emails.
+	 * @return WC_Email[]
+	 */
+	public function maybe_register_full_sync_complete_email( $email_classes ) {
+		if ( ! $this->manager->is_connected() ) {
+			return $email_classes;
+		}
+
+		if ( $this->has_full_sync_ever_finished() ) {
+			return $email_classes;
+		}
+
+		$email_classes[ AdminFullSyncCompleteEmail::EMAIL_KEY ] = new AdminFullSyncCompleteEmail();
+		return $email_classes;
+	}
+
+	/**
+	 * Check if the full sync has ever finished.
+	 *
+	 * @return bool True if the full sync has ever finished, false otherwise.
+	 */
+	protected function has_full_sync_ever_finished(): bool {
+		return get_option( self::INITIAL_FULL_SYNC_OPTION, 0 ) > 0;
 	}
 
 	/**
@@ -96,14 +127,22 @@ class SyncStatus extends WC_REST_Controller implements RegistrableInterface {
 	 */
 	public function on_sync_processed_actions( array $actions ): void {
 		// If full sync has already finished previously, we expect the email notification to have been sent already.
-		$full_sync_ever_finished = get_option( self::INITIAL_FULL_SYNC_OPTION, 0 );
-		if ( $full_sync_ever_finished ) {
+		if ( $this->has_full_sync_ever_finished() ) {
 			return;
 		}
 
-		// If the Woocommerce Analytics sync is not finished, then full sync isn't either so we won't need to do anything.
 		$full_status = $this->sync_modules->get_full_sync_immediately()->get_status();
-		if ( empty( $full_status['progress']['woocommerce_analytics']['finished'] ) ) {
+
+		/*
+		 * Full sync is running but WooCommerce Analytics data are not in the sync queue.
+		 */
+		if ( ! isset( $full_status['config']['woocommerce_analytics'] ) || true !== $full_status['config']['woocommerce_analytics'] ) {
+			return;
+		}
+
+		// Check if the full sync has ended.
+		$full_sync_end_action = $this->get_full_sync_end_action( $actions );
+		if ( ! $full_sync_end_action ) {
 			return;
 		}
 
@@ -114,26 +153,21 @@ class SyncStatus extends WC_REST_Controller implements RegistrableInterface {
 		$email_notification_sent = get_option( self::EMAIL_NOTIFICATION_SENT_OPTION, 'no' );
 		if ( 'no' === $email_notification_sent ) {
 			try {
-				AdminFullSyncEmailNotification::send_email_notification();
+				AdminFullSyncCompleteEmail::send_email_notification();
 				update_option( self::EMAIL_NOTIFICATION_SENT_OPTION, 'yes' );
 			} catch ( \Exception $e ) {
 				$this->logger->log_error( 'Failed to send sync completion email.', __METHOD__ );
 			}
 		}
 
-		// Track full sync completion.
-		foreach ( $actions as $action ) {
-			if ( 'jetpack_full_sync_end' === $action[0] ) {
-				/*
-				 * The last update_status call in Full_Sync_Immediately::send() doesn't happen until after jetpack_full_sync_end is called.
-				 * So we use the timestamp of jetpack_full_sync_end action to set the `finished` timestamp in full_status (in testing, they're the same).
-				 * Note: see Year 2038 problem.
-				 */
-				$full_status['finished'] = intval( $action[3] );
-				Tracking::track_full_sync_completed( $full_status );
-				update_option( self::INITIAL_FULL_SYNC_OPTION, $full_status['finished'] );
-			}
-		}
+		/*
+		* The last update_status call in Full_Sync_Immediately::send() doesn't happen until after jetpack_full_sync_end is called.
+		* So we use the timestamp of jetpack_full_sync_end action to set the `finished` timestamp in full_status (in testing, they're the same).
+		* Note: see Year 2038 problem.
+		*/
+		$full_status['finished'] = intval( $full_sync_end_action[3] );
+		Tracking::track_full_sync_completed( $full_status );
+		update_option( self::INITIAL_FULL_SYNC_OPTION, $full_status['finished'] );
 	}
 
 	/**
@@ -398,5 +432,21 @@ class SyncStatus extends WC_REST_Controller implements RegistrableInterface {
 		);
 
 		return $this->add_additional_fields_schema( $schema );
+	}
+
+	/**
+	 * Get the full sync end action from the actions array.
+	 *
+	 * @param array $actions The actions array.
+	 *
+	 * @return array|null The full sync end action or null if not found.
+	 */
+	private function get_full_sync_end_action( array $actions ): ?array {
+		foreach ( $actions as $action ) {
+			if ( 'jetpack_full_sync_end' === $action[0] ) {
+				return $action;
+			}
+		}
+		return null;
 	}
 }

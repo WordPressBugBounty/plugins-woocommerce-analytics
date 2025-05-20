@@ -158,6 +158,9 @@ class ApiProxy extends WC_REST_Controller implements RegistrableInterface {
 
 		// Add query params to the endpoint.
 		$params = $request->get_query_params();
+		// Remove the WordPress REST API specific parameter.
+		unset( $params['rest_route'] );
+
 		if ( is_array( $params ) && ! empty( $params ) ) {
 			$endpoint_url .= '?' . http_build_query( $params );
 		}

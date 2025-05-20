@@ -15,7 +15,7 @@ return array(
 		'path'    => $vendorDir . '/automattic/jetpack-connection/actions.php'
 	),
 	'964d912091ae019eb62b5eab8f3f02ab' => array(
-		'version' => 'dev-hotfix/0.9.10',
+		'version' => 'dev-release',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/functions.php'
 	),
 );
