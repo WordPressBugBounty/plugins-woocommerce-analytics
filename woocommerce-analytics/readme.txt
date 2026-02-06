@@ -1,7 +1,7 @@
 === WooCommerce Analytics ===
 Contributors: WooCommerce
 Tags: WooCommerce, analytics, order attribution, marketing, business insights
-Stable tag: 0.9.11
+Stable tag: 0.9.12
 Requires at least: 6.5
 Requires PHP: 7.4
 Tested up to: 6.8
@@ -81,6 +81,11 @@ By identifying top-performing channels and sources, you can allocate your market
 5. Orders by Channel & Source - Combine channel and source data for a more detailed view of your order attribution (e.g., see Paid Ads broken down by Google vs. Facebook vs. Instagram ads).
 
 == Changelog ==
+
+= 0.9.12 - 2025-10-08 =
+* Dev - Add JSON_HEX_TAG to wp_json_encode.
+* Tweak - WC 10.3 compatibility.
+* Update - Updated permissions of **Order Attribution** page to allow shop managers to see reports also.
 
 = 0.9.11 - 2025-05-20 =
 * Tweak - WC 9.9 compatibility.

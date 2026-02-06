@@ -208,7 +208,7 @@ class SyncStatus extends WC_REST_Controller implements RegistrableInterface {
 				array(
 					'methods'             => \WP_REST_Server::CREATABLE,
 					'callback'            => array( $this, 'reset_sync_status' ),
-					'permission_callback' => array( $this, 'check_permission' ),
+					'permission_callback' => array( $this, 'check_permission_reset_sync_status' ),
 					'schema'              => array( $this, 'get_reset_sync_schema' ),
 				),
 			)
@@ -223,6 +223,17 @@ class SyncStatus extends WC_REST_Controller implements RegistrableInterface {
 	 * @return bool
 	 */
 	public function check_permission( WP_REST_Request $request ): bool {
+		return current_user_can( 'view_woocommerce_reports' );
+	}
+
+	/**
+	 * Check if a given request has permission to read the sync status reset.
+	 *
+	 * @param WP_REST_Request $request Request object.
+	 *
+	 * @return bool
+	 */
+	public function check_permission_reset_sync_status( WP_REST_Request $request ): bool {
 		return current_user_can( 'manage_options' );
 	}
 

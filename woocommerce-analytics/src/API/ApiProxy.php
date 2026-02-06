@@ -101,7 +101,7 @@ class ApiProxy extends WC_REST_Controller implements RegistrableInterface {
 	 * @return bool
 	 */
 	public function check_permission( WP_REST_Request $request ): bool {
-		return current_user_can( 'manage_options' );
+		return current_user_can( 'view_woocommerce_reports' );
 	}
 
 	/**

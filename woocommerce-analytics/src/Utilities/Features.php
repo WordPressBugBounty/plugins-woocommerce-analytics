@@ -104,7 +104,7 @@ class Features {
 	public static function expose_features_to_client() {
 		wp_add_inline_script(
 			'analytics-main-app',
-			'window.wcAnalyticsFeatures = ' . wp_json_encode( self::$features ),
+			'window.wcAnalyticsFeatures = ' . wp_json_encode( self::$features, JSON_HEX_TAG | JSON_UNESCAPED_SLASHES ),
 			'before'
 		);
 	}

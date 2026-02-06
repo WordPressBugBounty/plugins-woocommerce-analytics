@@ -1,5 +1,10 @@
 *** WooCommerce Analytics Changelog ***
 
+= 0.9.12 - 2025-10-08 =
+* Dev - Add JSON_HEX_TAG to wp_json_encode.
+* Tweak - WC 10.3 compatibility.
+* Update - Updated permissions of **Order Attribution** page to allow shop managers to see reports also.
+
 = 0.9.11 - 2025-05-20 =
 * Tweak - WC 9.9 compatibility.
 * Tweak - WP 6.8 compatibility.

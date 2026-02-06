@@ -511,491 +511,491 @@ return array(
 		'path'    => $vendorDir . '/automattic/jetpack-connection/src/class-tracking.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\API\\ApiProxy' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/API/ApiProxy.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\API\\SyncStatus' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/API/SyncStatus.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Admin\\Admin' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/Admin/Admin.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Admin\\DebugTools\\WooCommerceStatusTools' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/Admin/DebugTools/WooCommerceStatusTools.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Autoloader' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/Autoloader.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Annotation\\Inject' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Annotation/Inject.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Annotation\\Injectable' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Annotation/Injectable.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\CompiledContainer' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/CompiledContainer.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Compiler\\Compiler' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Compiler/Compiler.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Compiler\\ObjectCreationCompiler' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Compiler/ObjectCreationCompiler.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Compiler\\RequestedEntryHolder' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Compiler/RequestedEntryHolder.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Container' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Container.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\ContainerBuilder' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/ContainerBuilder.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\ArrayDefinition' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/ArrayDefinition.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\ArrayDefinitionExtension' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/ArrayDefinitionExtension.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\AutowireDefinition' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/AutowireDefinition.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\DecoratorDefinition' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/DecoratorDefinition.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Definition' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Definition.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Dumper\\ObjectDefinitionDumper' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Dumper/ObjectDefinitionDumper.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\EnvironmentVariableDefinition' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/EnvironmentVariableDefinition.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Exception\\InvalidAnnotation' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Exception/InvalidAnnotation.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Exception\\InvalidDefinition' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Exception/InvalidDefinition.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\ExtendsPreviousDefinition' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/ExtendsPreviousDefinition.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\FactoryDefinition' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/FactoryDefinition.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Helper\\AutowireDefinitionHelper' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Helper/AutowireDefinitionHelper.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Helper\\CreateDefinitionHelper' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Helper/CreateDefinitionHelper.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Helper\\DefinitionHelper' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Helper/DefinitionHelper.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Helper\\FactoryDefinitionHelper' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Helper/FactoryDefinitionHelper.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\InstanceDefinition' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/InstanceDefinition.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\ObjectDefinition' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/ObjectDefinition.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\ObjectDefinition\\MethodInjection' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/ObjectDefinition/MethodInjection.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\ObjectDefinition\\PropertyInjection' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/ObjectDefinition/PropertyInjection.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Reference' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Reference.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Resolver\\ArrayResolver' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Resolver/ArrayResolver.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Resolver\\DecoratorResolver' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Resolver/DecoratorResolver.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Resolver\\DefinitionResolver' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Resolver/DefinitionResolver.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Resolver\\EnvironmentVariableResolver' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Resolver/EnvironmentVariableResolver.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Resolver\\FactoryResolver' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Resolver/FactoryResolver.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Resolver\\InstanceInjector' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Resolver/InstanceInjector.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Resolver\\ObjectCreator' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Resolver/ObjectCreator.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Resolver\\ParameterResolver' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Resolver/ParameterResolver.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Resolver\\ResolverDispatcher' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Resolver/ResolverDispatcher.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\SelfResolvingDefinition' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/SelfResolvingDefinition.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Source\\AnnotationBasedAutowiring' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Source/AnnotationBasedAutowiring.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Source\\Autowiring' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Source/Autowiring.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Source\\DefinitionArray' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Source/DefinitionArray.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Source\\DefinitionFile' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Source/DefinitionFile.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Source\\DefinitionNormalizer' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Source/DefinitionNormalizer.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Source\\DefinitionSource' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Source/DefinitionSource.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Source\\MutableDefinitionSource' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Source/MutableDefinitionSource.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Source\\NoAutowiring' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Source/NoAutowiring.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Source\\ReflectionBasedAutowiring' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Source/ReflectionBasedAutowiring.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Source\\SourceCache' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Source/SourceCache.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\Source\\SourceChain' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/Source/SourceChain.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\StringDefinition' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/StringDefinition.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Definition\\ValueDefinition' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Definition/ValueDefinition.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\DependencyException' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/DependencyException.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\FactoryInterface' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/FactoryInterface.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Factory\\RequestedEntry' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Factory/RequestedEntry.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Invoker\\DefinitionParameterResolver' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Invoker/DefinitionParameterResolver.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Invoker\\FactoryParameterResolver' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Invoker/FactoryParameterResolver.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\NotFoundException' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/NotFoundException.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\DI\\Proxy\\ProxyFactory' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/DI/Proxy/ProxyFactory.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Invoker\\CallableResolver' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Invoker/CallableResolver.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Invoker\\Exception\\InvocationException' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Invoker/Exception/InvocationException.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Invoker\\Exception\\NotCallableException' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Invoker/Exception/NotCallableException.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Invoker\\Exception\\NotEnoughParametersException' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Invoker/Exception/NotEnoughParametersException.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Invoker\\Invoker' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Invoker/Invoker.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Invoker\\InvokerInterface' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Invoker/InvokerInterface.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Invoker\\ParameterResolver\\AssociativeArrayResolver' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Invoker/ParameterResolver/AssociativeArrayResolver.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Invoker\\ParameterResolver\\Container\\ParameterNameContainerResolver' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Invoker/ParameterResolver/Container/ParameterNameContainerResolver.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Invoker\\ParameterResolver\\Container\\TypeHintContainerResolver' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Invoker/ParameterResolver/Container/TypeHintContainerResolver.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Invoker\\ParameterResolver\\DefaultValueResolver' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Invoker/ParameterResolver/DefaultValueResolver.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Invoker\\ParameterResolver\\NumericArrayResolver' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Invoker/ParameterResolver/NumericArrayResolver.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Invoker\\ParameterResolver\\ParameterResolver' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Invoker/ParameterResolver/ParameterResolver.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Invoker\\ParameterResolver\\ResolverChain' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Invoker/ParameterResolver/ResolverChain.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Invoker\\ParameterResolver\\TypeHintResolver' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Invoker/ParameterResolver/TypeHintResolver.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Invoker\\Reflection\\CallableReflection' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Invoker/Reflection/CallableReflection.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Laravel\\SerializableClosure\\Contracts\\Serializable' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Laravel/SerializableClosure/Contracts/Serializable.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Laravel\\SerializableClosure\\Contracts\\Signer' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Laravel/SerializableClosure/Contracts/Signer.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Laravel\\SerializableClosure\\Exceptions\\InvalidSignatureException' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Laravel/SerializableClosure/Exceptions/InvalidSignatureException.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Laravel\\SerializableClosure\\Exceptions\\MissingSecretKeyException' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Laravel/SerializableClosure/Exceptions/MissingSecretKeyException.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Laravel\\SerializableClosure\\Exceptions\\PhpVersionNotSupportedException' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Laravel/SerializableClosure/Exceptions/PhpVersionNotSupportedException.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Laravel\\SerializableClosure\\SerializableClosure' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Laravel/SerializableClosure/SerializableClosure.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Laravel\\SerializableClosure\\Serializers\\Native' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Laravel/SerializableClosure/Serializers/Native.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Laravel\\SerializableClosure\\Serializers\\Signed' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Laravel/SerializableClosure/Serializers/Signed.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Laravel\\SerializableClosure\\Signers\\Hmac' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Laravel/SerializableClosure/Signers/Hmac.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Laravel\\SerializableClosure\\Support\\ClosureScope' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Laravel/SerializableClosure/Support/ClosureScope.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Laravel\\SerializableClosure\\Support\\ClosureStream' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Laravel/SerializableClosure/Support/ClosureStream.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Laravel\\SerializableClosure\\Support\\ReflectionClosure' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Laravel/SerializableClosure/Support/ReflectionClosure.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Laravel\\SerializableClosure\\Support\\SelfReference' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Laravel/SerializableClosure/Support/SelfReference.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Laravel\\SerializableClosure\\UnsignedSerializableClosure' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Laravel/SerializableClosure/UnsignedSerializableClosure.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\PhpDocReader\\AnnotationException' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/PhpDocReader/AnnotationException.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\PhpDocReader\\PhpDocReader' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/PhpDocReader/PhpDocReader.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\PhpDocReader\\PhpParser\\TokenParser' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/PhpDocReader/PhpParser/TokenParser.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\PhpDocReader\\PhpParser\\UseStatementParser' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/PhpDocReader/PhpParser/UseStatementParser.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Psr\\Container\\ContainerExceptionInterface' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Psr/Container/ContainerExceptionInterface.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Psr\\Container\\ContainerInterface' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Psr/Container/ContainerInterface.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Dependencies\\Psr\\Container\\NotFoundExceptionInterface' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $vendorDir . '/woocommerce/analytics/dependencies/src/Psr/Container/NotFoundExceptionInterface.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Exception\\InvalidVersion' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/Exception/InvalidVersion.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Exception\\RequiredFeatureDisabled' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/Exception/RequiredFeatureDisabled.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Exception\\WooCommerceAnalyticsException' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/Exception/WooCommerceAnalyticsException.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\HelperTraits\\LoggerTrait' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/HelperTraits/LoggerTrait.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\HelperTraits\\Utilities' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/HelperTraits/Utilities.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Internal\\DI\\Configuration' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/Internal/DI/Configuration.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Internal\\DI\\RegistrableInterface' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/Internal/DI/RegistrableInterface.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Internal\\FullSyncCheck\\AdminFullSyncCompleteEmail' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/Internal/FullSyncCheck/AdminFullSyncCompleteEmail.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Internal\\Jetpack\\SyncModules' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/Internal/Jetpack/SyncModules.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Internal\\Jetpack\\Sync\\Configuration' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/Internal/Jetpack/Sync/Configuration.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Internal\\Jetpack\\Sync\\Modules\\Analytics' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/Internal/Jetpack/Sync/Modules/Analytics.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Internal\\Plugin' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/Internal/Plugin.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Internal\\Requirements\\OrderAttributionConfigValidator' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/Internal/Requirements/OrderAttributionConfigValidator.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Internal\\Requirements\\PluginValidator' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/Internal/Requirements/PluginValidator.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Internal\\Requirements\\RequirementValidator' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/Internal/Requirements/RequirementValidator.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Internal\\Requirements\\RequirementValidatorInterface' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/Internal/Requirements/RequirementValidatorInterface.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Internal\\Requirements\\WCValidator' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/Internal/Requirements/WCValidator.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Logging\\DebugLogger' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/Logging/DebugLogger.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Logging\\LoggerInterface' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/Logging/LoggerInterface.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Tests\\SampleTest' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/tests/Unit/SampleTest.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Utilities\\Features' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/Utilities/Features.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Utilities\\OrderStatsFixer' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/Utilities/OrderStatsFixer.php'
 	),
 	'Automattic\\WooCommerce\\Analytics\\Utilities\\Tracking' => array(
-		'version' => 'dev-release',
+		'version' => 'dev-release/0.9.12',
 		'path'    => $baseDir . '/src/Utilities/Tracking.php'
 	),
 	'Container' => array(

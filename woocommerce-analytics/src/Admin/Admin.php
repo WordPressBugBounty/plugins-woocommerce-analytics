@@ -522,7 +522,8 @@ class Admin implements RegistrableInterface {
 				'window.wcAnalyticsJetpackStatus = ' . wp_json_encode(
 					array(
 						'isOfflineMode' => ( new Status() )->is_offline_mode(),
-					)
+					),
+					JSON_HEX_TAG | JSON_UNESCAPED_SLASHES
 				) . ';',
 				'before'
 			);
@@ -888,7 +889,7 @@ class Admin implements RegistrableInterface {
 		$menu_structure = $this->get_wc_analytics_sections_structure();
 
 		// Add the default section, which is the dashboard.
-		$menu_json = wp_json_encode( $menu_structure );
+		$menu_json = wp_json_encode( $menu_structure, JSON_HEX_TAG | JSON_UNESCAPED_SLASHES );
 
 		wp_add_inline_script(
 			'analytics-admin-app', // Enqueue for the new admin layout app.
