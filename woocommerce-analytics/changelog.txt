@@ -1,5 +1,9 @@
 *** WooCommerce Analytics Changelog ***
 
+= 0.9.13 - 2026-03-11 =
+* Tweak - WC 10.6 compatibility.
+* Tweak - WP 7.0 compatibility.
+
 = 0.9.12 - 2025-10-08 =
 * Dev - Add JSON_HEX_TAG to wp_json_encode.
 * Tweak - WC 10.3 compatibility.
