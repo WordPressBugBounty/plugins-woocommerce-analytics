@@ -13,7 +13,7 @@ class ComposerStaticInitd22a48e07d718bac00f1da8081aa2fc8
     );
 
     public static $prefixLengthsPsr4 = array (
-        'A' => 
+        'A' =>
         array (
             'Automattic\\WooCommerce\\Analytics\\Dependencies\\' => 46,
             'Automattic\\WooCommerce\\Analytics\\' => 33,
@@ -22,15 +22,15 @@ class ComposerStaticInitd22a48e07d718bac00f1da8081aa2fc8
     );
 
     public static $prefixDirsPsr4 = array (
-        'Automattic\\WooCommerce\\Analytics\\Dependencies\\' => 
+        'Automattic\\WooCommerce\\Analytics\\Dependencies\\' =>
         array (
             0 => __DIR__ . '/..' . '/woocommerce/analytics/dependencies/src',
         ),
-        'Automattic\\WooCommerce\\Analytics\\' => 
+        'Automattic\\WooCommerce\\Analytics\\' =>
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
-        'Automattic\\Jetpack\\Autoloader\\' => 
+        'Automattic\\Jetpack\\Autoloader\\' =>
         array (
             0 => __DIR__ . '/..' . '/automattic/jetpack-autoloader/src',
         ),
