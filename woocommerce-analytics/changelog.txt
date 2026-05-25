@@ -1,5 +1,9 @@
 *** WooCommerce Analytics Changelog ***
 
+= 0.9.15 - 2026-05-25 =
+* Tweak - Add "Woo Analytics" to readme tags to improve plugin directory search discoverability.
+* Tweak - WC 10.8 compatibility.
+
 = 0.9.14 - 2026-04-20 =
 * Tweak - WC 10.7 compatibility.
 * Tweak - WP 7.0 compatibility.

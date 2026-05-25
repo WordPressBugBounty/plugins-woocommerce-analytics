@@ -3,7 +3,7 @@
  * Plugin Name:          WooCommerce Analytics
  * Plugin URI:           https://woocommerce.com
  * Description:          Unlock actionable insights to boost sales and maximize your marketing ROI with WooCommerce Analytics.
- * Version:              0.9.14
+ * Version:              0.9.15
  * Author:               WooCommerce
  * Author URI:           https://woocommerce.com/
  * Text Domain:          woocommerce-analytics
@@ -12,7 +12,7 @@
  * Requires PHP:         7.4
  * Tested up to: 7.0
  * Requires at least:    6.5
- * WC tested up to: 10.7
+ * WC tested up to: 10.8
  * WC requires at least: 9.5
  *
  * License:              GNU General Public License v3.0
@@ -24,7 +24,7 @@ use Automattic\WooCommerce\Analytics\Internal\Plugin;
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'WC_ANALYTICS_VERSION', '0.9.14' ); // WRCS: DEFINED_VERSION.
+define( 'WC_ANALYTICS_VERSION', '0.9.15' ); // WRCS: DEFINED_VERSION.
 define( 'WC_ANALYTICS_MIN_PHP_VER', '7.4' );
 define( 'WC_ANALYTICS_MIN_WC_VER', '9.5.0' );
 define( 'WC_ANALYTICS_FILE', __FILE__ );
